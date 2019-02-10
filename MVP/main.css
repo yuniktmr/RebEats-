@@ -1,0 +1,140 @@
+*{
+ padding: 0;
+ margin: 0;
+}
+body{
+    background: #f5f3f5;
+    font-family: 'Roboto', sans-serif;
+}
+
+#nav ul{
+    list-style-type: none;
+    display: none;
+}
+#nav ul li a{
+    text-decoration: none;
+    display: block;
+    color: #ffc914;
+    padding: 10px;
+    background: #2e282a;
+    font-size: 20px;
+    transition: color 2s ease-in-out, background 2s ease;
+}
+#nav ul li:last-of-type{
+    display: flex;
+/*
+    justify-content: space-between;
+    background: #2e282e;
+*/
+}
+#nav ul li:last-of-type a{
+    flex: 1 0 auto;
+    text-align: center;
+}
+#nav ul li a:hover{
+    color: #2e282a;
+    background: #ffc914;
+}
+.nav-logo{
+    background: #ffc914;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-logo .fa{
+    align-self: center;
+    padding: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+.new-nav{
+    position: fixed;
+    width: 100vw;
+    z-index: 10!important;
+}
+@media screen and (min-width:776px) {
+    #nav{
+        border-top: 5px solid #ffc914;
+        display: flex;
+        background: #2e282a;
+    }
+    #nav ul li:last-of-type{
+        display: none;
+    }
+    #nav ul{
+    display: flex!important;
+    flex: 1 0 auto;
+    justify-content: space-around;
+    align-self: center;
+     flex-wrap: wrap;
+    padding: 0 10px;
+    
+}
+#nav ul li{
+    flex: 1 0 100px;
+}
+#nav ul li a{
+    border-radius: 5px;
+    text-align: center;
+}
+    #toggle-btn{
+        display: none;
+    }
+
+}
+/*#########################3header###################################*/
+header{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+#banner{
+    flex: 1 0 auto;
+    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(images/Bar.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.banner-text h1{
+    text-transform: uppercase;
+    color: #ffc914;
+    font-size: 60px;
+    font-style: italic;
+    text-decoration: underline;
+}
+.banner-text h3{
+    text-transform: capitalize;
+    font-size: 30px;
+    margin: 10px 0;
+    color: #d9e5d6;
+    
+}
+.banner-text a{
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 25px;
+    padding: 10px;
+    color: #ffc914;
+    border: 3px solid #ffc914;
+    background: transparent;
+    transition: color 2s ease, background 2s ease;
+}
+.banner-text a:hover{
+    color: #2e282e;
+    background: #ffc914;
+}
+/*##########################################icon section####################################*/
+#icon-section{
+    
+}
+
+
+
+
