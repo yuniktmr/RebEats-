@@ -1,0 +1,46 @@
+body{
+    background: #fff
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Slabo 27px', serif;
+    background-image: url(images);
+    background-image: url(image/blur-close-up-focus-217316.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+.auth{
+    width: 25%;
+    margin: 0px auto;
+    margin-top: 150px;
+    padding:20px;
+    text-align: center;
+    
+}
+.auth input{
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding:15px ;
+    outline: none;
+    width: 100%;
+}
+.auth button{
+    background: #5d8ffc;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding:15px;
+    outline: none;
+    width: 109%;
+}
+
+.auth #button2{
+     background: #5d8f00;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding:15px;
+    outline: none;
+    width: 109%;
+}
