@@ -1,0 +1,10 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#Input ul{
+    list-style: none;
+    margin: 0px 0px;
+    border: solid 2px;
+    
+}
