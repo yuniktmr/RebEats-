@@ -40,5 +40,5 @@ function register(){
 }
 function loader(){
     
-     window.location.href = "../index.html";
+     window.location.href = "../index.php";
 }
