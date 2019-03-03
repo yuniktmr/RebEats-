@@ -71,6 +71,6 @@ function register(){
 
 }
 function registerScreen(){
-    window.location.href = "Form/index.php";
+    window.location.href = "Form/index.html";
     
 }
