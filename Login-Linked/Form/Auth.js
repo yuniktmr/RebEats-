@@ -21,6 +21,9 @@ function register(){
         //window.location.href = "";
 
         //}, 5000);
+
+        
+
     }).catch(function(error) {
         //runs if registration is not successful
 
@@ -41,4 +44,35 @@ function register(){
 function loader(){
     
      window.location.href = "../index.html";
+}
+
+function showFields(){
+
+    let selected = document.getElementById("type").value
+
+    if(selected === "restaurant"){
+
+        //document.getElementById("driverFields").style.display = "none";
+        //document.getElementById("customerFields").style.display = "none";
+        document.getElementById("restFields").style.display = "initial";
+
+
+    }else if(selected === "driver"){
+
+        document.getElementById("restFields").style.display = "none";
+
+    }else if(selected === "customer"){
+
+        document.getElementById("restFields").style.display = "none";
+
+    }
+
+}
+
+function onload(){
+
+    document.getElementById("restFields").style.display = "none";
+    //document.getElementById("driverFields").style.display = "none";
+    //document.getElementById("customerFields").style.display = "none";
+
 }
