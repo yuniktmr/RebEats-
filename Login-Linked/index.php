@@ -25,7 +25,7 @@
 </head>
 <script src="index.js"></script>
 
-<body>
+<body onload="onload()">
     <div class="auth">
         <h1> Welcome To the Login Page</h1>
         <div class="buttons">

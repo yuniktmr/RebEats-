@@ -23,3 +23,14 @@ $('nav a').click(function(link){
         scrollTop : $(target).offset().top
     }, "slow");
 })
+
+function onload(){
+
+    firebase.auth().onAuthStateChanged(function(user) {
+
+    console.log(user.email)
+
+    });
+
+    
+}
