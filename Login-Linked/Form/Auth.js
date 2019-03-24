@@ -11,6 +11,32 @@ function register(){
     var email = document.getElementById("emailInput").value;
     var password = document.getElementById("passwordInput").value;
 
+    var type = document.getElementById("type").value;
+
+    if(type === "restaurant"){
+
+        var restName = document.getElementById("restName").value;
+        var restAddress = document.getElementById("restAddress").value;
+        var restZipcode = document.getElementById("restZipcode").value;
+        var restPNumber = document.getElementById("restPNumber").value;
+        var restOpen = document.getElementById("restOpen").value;
+        var restClose = document.getElementById("restClose").value;
+
+        if(restName === "" || restAddress === "" || restZipcode === ""
+        || restPNumber === "" || restOpen === "" || restClose === ""){
+            alert("Please input values for all fields")
+            return
+        }
+        
+    }else if(type === "driver"){
+
+    }else if(type === "customer"){
+
+    }else{
+        alert("Please select an account type")
+        return 
+    }
+
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
         //runs if registration is successful
         alert("Account created successfully");
@@ -22,7 +48,18 @@ function register(){
 
         //}, 5000);
 
-        
+        if(type === "restaurant"){
+
+            window.location.href="../includes/register.php?email="+email+"&type="+type+"&restName="+restName+"&restAddress="+restAddress
+            +"&restZipcode="+restZipcode+"&restPNumber="+restPNumber+"&restOpen="+restOpen+"&restClose="+restClose;
+
+        }else if(type === "driver"){
+
+        }else if(type === "customer"){
+
+        }
+
+
 
     }).catch(function(error) {
         //runs if registration is not successful
@@ -41,6 +78,11 @@ function register(){
       });
 
 }
+
+function createFirebaseUser(email, password){
+
+}
+
 function loader(){
     
      window.location.href = "../index.html";

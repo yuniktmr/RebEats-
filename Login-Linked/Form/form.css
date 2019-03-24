@@ -125,6 +125,16 @@ input[type="time"]
   border-radius: 2px;
 }
 
+#restOpen:before{
+  content:'Opening Time:';
+  margin-right:.6em;
+}
+
+#restClose:before{
+  content:'Closing Time:';
+  margin-right:.6em;
+}
+
 select,
 textarea,
 input[type="text"],

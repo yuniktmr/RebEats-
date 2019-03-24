@@ -46,8 +46,9 @@ CREATE TABLE restaurants (
   rest_name VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
   pNumber VARCHAR(255) NOT NULL,
-  open INT(11) NOT NULL,
-  close INT(11) NOT NULL,
+  zipcode int(11) NOT NULL,
+  open VARCHAR(255) NOT NULL,
+  close VARCHAR(255) NOT NULL,
   PRIMARY KEY (rest_id)
 )ENGINE = InnoDB;
 

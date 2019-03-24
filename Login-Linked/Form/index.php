@@ -25,13 +25,14 @@
       <!--
       <form class="form" method="post" enctype="multipart/form-data" autocomplete="off">
       <!-->
-        <div class="alert alert-error"></div>
-        <input type="email" placeholder="Email" id="emailInput" required />
-        <input type="password" placeholder="Password" id="passwordInput" required />
-        <div class="avatar"><label>Select your avatar: </label><input type="file" name="avatar" accept="image/*" required /></div>
 
-        <select name="type" id="type" onchange="showFields()" required>
-          <option selected disabled hidden>Select Account Type</option>
+        <div class="alert alert-error"></div>
+        <input type="email" placeholder="Email" id="emailInput" />
+        <input type="password" placeholder="Password" id="passwordInput" />
+        <div class="avatar"><label>Select your avatar: </label><input type="file" name="avatar" accept="image/*" /></div>
+
+        <select id="type" onchange="showFields()">
+          <option selected disabled hidden value="">Select Account Type</option>
           <option value="customer">Customer</option>
           <option value="driver">Driver</option>
           <option value="restaurant">Restaurant Owner</option>
@@ -39,16 +40,19 @@
 
         <div id="restFields">
 
-            <input type="text" placeholder="Restaurant Name" name="nameInput" required />
-            <input type="text" placeholder="Resaurant Address" name="address" required />
-            <input type="number" placeholder="Zipcode" name="zipcode" required />
-            <input type="tel" placeholder="Phone Number" name="pNumber" required />
-            <input type="time" placeholder="Opening Time" name="open" required />
-            <input type="time" placeholder="Closing Time" name="close" required />
+            <input type="text" placeholder="Restaurant Name" id="restName" />
+            <input type="text" placeholder="Resaurant Address" id="restAddress" />
+            <input type="number" placeholder="Zipcode" id="restZipcode"/>
+            <input type="tel" placeholder="Phone Number" id="restPNumber" />
+            <input type="time" placeholder="Opening Time" id="restOpen"/>
+            <input type="time" placeholder="Closing Time" id="restClose"/>
 
         </div>
 
         <input type="submit" value="Register" name="register" onclick = "register()" class="btn btn-block btn-primary" />
+
+
+
         <div class="link">Back to <a href="#" onclick="loader()">Sign in</a></div>
       
     </div>
