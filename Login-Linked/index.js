@@ -46,5 +46,12 @@ function registerScreen(){
 
 //sets sign in state persistence to local (won't sign out until the user explicitely does so)
 function onload(){
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          console.log(user.email)
+        }else {
+          console.log("no user signed in")
+        }
+    });
 }
