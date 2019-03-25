@@ -16,7 +16,8 @@ use eatrebs;
 CREATE TABLE customers (
   cus_id INT(11) NOT NULL AUTO_INCREMENT,
   email VARCHAR(255) NOT NULL,
-  name VARCHAR(255) NULL DEFAULT NULL,
+  name VARCHAR(255) NOT NULL,
+  zipcode int(11) NOT NULL,
   PRIMARY KEY (cus_id)
 )ENGINE = InnoDB ;
 
@@ -24,8 +25,8 @@ CREATE TABLE drivers (
   dr_id INT(11) NOT NULL AUTO_INCREMENT,
   earnings DECIMAL(13,2) NOT NULL DEFAULT 0,
   email VARCHAR(255) NOT NULL,
-  name VARCHAR(255) NULL DEFAULT NULL,
-  address VARCHAR(255) NULL DEFAULT NULL,
+  name VARCHAR(255) NOT NULL,
+  zipcode int(11) NOT NULL,
   PRIMARY KEY (dr_id)
 )ENGINE = InnoDB;
 
