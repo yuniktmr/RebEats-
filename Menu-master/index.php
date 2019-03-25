@@ -1,8 +1,3 @@
-<?php
-	require_once "../Login-Linked/includes/dbh.php"; //loads $conn for connecting to the database
-
-	$email = $_GET['email'];
-?>
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -23,6 +18,26 @@
 </head>
 
 <body>
+
+	<?php
+		require_once "../Login-Linked/includes/dbh.php"; //loads $conn for connecting to the database
+
+		$email = $_GET['email'];
+
+		error_log($email, 4);
+
+		$resultItems = mysqli_query($conn, "SELECT * FROM items WHERE rest_id = (SELECT rest_id FROM restaurants WHERE email = '$email');");
+		if($resultItems->num_rows > 0){
+			echo "<div style='display: none' id='phpItems'>";
+			while($row = $resultItems->fetch_assoc()){
+				echo "<li class='product'><ul><li>".$row['name']."</li><li>$".$row['cost']."</li><li>".$row['description']."</li></ul></li>";
+				error_log(print_r($row['name'], true));
+			}
+			echo "</div>";
+		}
+
+	?>
+
 	<!-- Main container -->
 	<div class="container">
 		<!-- Blueprint header -->
@@ -112,10 +127,7 @@
 		</nav>
 		<div class="content">
 			<p class="info">Please choose a category</p>
-			
-			<ul><li>Item</li><li>Cost</li><li>description</li>
-			
-
+		
 		</div>
 	</div>
 	<!-- /view -->
@@ -123,6 +135,7 @@
 	<script src="js/dummydata.js"></script>
 	<script src="js/main.js"></script>
 	<script>
+
 	(function() {
 		var menuEl = document.getElementById('ml-menu'),
 			mlmenu = new MLMenu(menuEl, {
@@ -161,7 +174,7 @@
 			classie.add(gridWrapper, 'content--loading');
 			setTimeout(function() {
 				classie.remove(gridWrapper, 'content--loading');
-				gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
+				gridWrapper.innerHTML = '<ul class="products">' + document.getElementById('phpItems').innerHTML + '<ul>'; //dummyData[itemName]
 			}, 700);
 		}
 	})();
