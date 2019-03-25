@@ -40,6 +40,14 @@ function register(){
 
     }else if(type === "customer"){
 
+        var customerName = document.getElementById("customerName").value;
+        var customerZipcode = document.getElementById("customerZipcode").value;
+
+        if(customerName === "" || customerZipcode === ""){
+            alert("Please input values for all fields")
+            return
+        }
+
     }else{
         alert("Please select an account type")
         return 
@@ -57,16 +65,12 @@ function register(){
         //}, 5000);
 
         if(type === "restaurant"){
-
             window.location.href="../includes/register.php?email="+email+"&type="+type+"&restName="+restName+"&restAddress="+restAddress
             +"&restZipcode="+restZipcode+"&restPNumber="+restPNumber+"&restOpen="+restOpen+"&restClose="+restClose;
-
         }else if(type === "driver"){
-
             window.location.href="../includes/register.php?email="+email+"&type="+type+"&driverName="+driverName+"&driverZipcode="+driverZipcode;
-
         }else if(type === "customer"){
-
+            window.location.href="../includes/register.php?email="+email+"&type="+type+"&customerName="+customerName+"&customerZipcode="+customerZipcode;
         }
 
 
@@ -101,19 +105,22 @@ function showFields(){
     if(selected === "restaurant"){
 
         document.getElementById("driverFields").style.display = "none";
-        //document.getElementById("customerFields").style.display = "none";
+        document.getElementById("customerFields").style.display = "none";
         document.getElementById("restFields").style.display = "initial";
 
 
     }else if(selected === "driver"){
 
         document.getElementById("restFields").style.display = "none";
-        //document.getElementById("customerFields").style.display = "none";
+        document.getElementById("customerFields").style.display = "none";
         document.getElementById("driverFields").style.display = "initial";
 
     }else if(selected === "customer"){
 
         document.getElementById("restFields").style.display = "none";
+        document.getElementById("driverFields").style.display = "none";
+        document.getElementById("customerFields").style.display = "initial";
+
 
     }
 
@@ -123,6 +130,6 @@ function onload(){
 
     document.getElementById("restFields").style.display = "none";
     document.getElementById("driverFields").style.display = "none";
-    //document.getElementById("customerFields").style.display = "none";
+    document.getElementById("customerFields").style.display = "none";
 
 }

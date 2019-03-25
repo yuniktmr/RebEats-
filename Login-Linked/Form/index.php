@@ -51,8 +51,15 @@
 
         <div id="driverFields">
 
-        <input type="text" placeholder="Name" id="driverName" />
-        <input type="text" placeholder="Zipcode" id="driverZipcode" />
+          <input type="text" placeholder="Name" id="driverName" />
+          <input type="text" placeholder="Zipcode" id="driverZipcode" />
+
+        </div>
+
+        <div id="customerFields">
+
+        <input type="text" placeholder="Name" id="customerName" />
+        <input type="text" placeholder="Zipcode" id="customerZipcode" />
 
         </div>
 

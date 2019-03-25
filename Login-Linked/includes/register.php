@@ -6,7 +6,15 @@
     $email = $_GET["email"];
 
     if($type === "customer"){
-        $sql = "INSERT INTO customers(email) VALUES ('$email');";
+
+        $customerName = $_GET["customerName"];
+        $customerZipcode = $_GET["customerZipcode"];
+
+        $sql = "INSERT INTO customers(email, name, zipcode)
+        VALUES ('$email', '$customerName', '$customerZipcode');";
+
+        mysqli_query($conn, $sql);
+
     }elseif($type === "driver"){
 
         $driverName = $_GET["driverName"];

@@ -16,7 +16,8 @@ use eatrebs;
 CREATE TABLE customers (
   cus_id INT(11) NOT NULL AUTO_INCREMENT,
   email VARCHAR(255) NOT NULL,
-  name VARCHAR(255) NULL DEFAULT NULL,
+  name VARCHAR(255) NOT NULL,
+  zipcode int(11) NOT NULL,
   PRIMARY KEY (cus_id)
 )ENGINE = InnoDB ;
 
