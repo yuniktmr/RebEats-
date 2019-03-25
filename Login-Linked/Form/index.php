@@ -38,6 +38,7 @@
           <option value="restaurant">Restaurant Owner</option>
         </select>
 
+          <!--div that contains the fields that are relevant to restaurant registration-->
         <div id="restFields">
 
             <input type="text" placeholder="Restaurant Name" id="restName" />
@@ -49,6 +50,7 @@
 
         </div>
 
+        <!--div that contains the fields that are relevant to driver registration-->
         <div id="driverFields">
 
           <input type="text" placeholder="Name" id="driverName" />
@@ -56,6 +58,7 @@
 
         </div>
 
+        <!--div that contains the fields that are relevant to customer registration-->
         <div id="customerFields">
 
         <input type="text" placeholder="Name" id="customerName" />

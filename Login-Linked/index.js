@@ -14,15 +14,12 @@ function login(){
     firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
         //runs if sign in is successful
 
+        //if a user is signed in, it will redirect to the php page that handles which page to redirect to
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
-                document.getElementById("status").innerHTML = ("Currently signed in as " + user.email);
-                window.location.href = "../Restaurant Owner/index.html";
+                window.location.href = "./includes/signinRedirect.php?email="+user.email;
             }
-          });
-
-        // Move to a new location or you can do something else
-        
+          });   
 
     }).catch(function(error) {
         //runs if sign in fails
@@ -47,6 +44,7 @@ function registerScreen(){
     
 }
 
+//sets sign in state persistence to local (won't sign out until the user explicitely does so)
 function onload(){
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 }
