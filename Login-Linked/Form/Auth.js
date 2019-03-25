@@ -30,6 +30,14 @@ function register(){
         
     }else if(type === "driver"){
 
+        var driverName = document.getElementById("driverName").value;
+        var driverZipcode = document.getElementById("driverZipcode").value;
+
+        if(driverName === "" || driverZipcode === ""){
+            alert("Please input values for all fields")
+            return
+        }
+
     }else if(type === "customer"){
 
     }else{
@@ -55,6 +63,8 @@ function register(){
 
         }else if(type === "driver"){
 
+            window.location.href="../includes/register.php?email="+email+"&type="+type+"&driverName="+driverName+"&driverZipcode="+driverZipcode;
+
         }else if(type === "customer"){
 
         }
@@ -79,10 +89,6 @@ function register(){
 
 }
 
-function createFirebaseUser(email, password){
-
-}
-
 function loader(){
     
      window.location.href = "../index.html";
@@ -94,7 +100,7 @@ function showFields(){
 
     if(selected === "restaurant"){
 
-        //document.getElementById("driverFields").style.display = "none";
+        document.getElementById("driverFields").style.display = "none";
         //document.getElementById("customerFields").style.display = "none";
         document.getElementById("restFields").style.display = "initial";
 
@@ -102,6 +108,8 @@ function showFields(){
     }else if(selected === "driver"){
 
         document.getElementById("restFields").style.display = "none";
+        //document.getElementById("customerFields").style.display = "none";
+        document.getElementById("driverFields").style.display = "initial";
 
     }else if(selected === "customer"){
 
@@ -114,7 +122,7 @@ function showFields(){
 function onload(){
 
     document.getElementById("restFields").style.display = "none";
-    //document.getElementById("driverFields").style.display = "none";
+    document.getElementById("driverFields").style.display = "none";
     //document.getElementById("customerFields").style.display = "none";
 
 }

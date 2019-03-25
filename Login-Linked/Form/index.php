@@ -49,6 +49,13 @@
 
         </div>
 
+        <div id="driverFields">
+
+        <input type="text" placeholder="Name" id="driverName" />
+        <input type="text" placeholder="Zipcode" id="driverZipcode" />
+
+        </div>
+
         <input type="submit" value="Register" name="register" onclick = "register()" class="btn btn-block btn-primary" />
 
 
