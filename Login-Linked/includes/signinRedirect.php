@@ -12,13 +12,20 @@
 
     //makes query for $sqlRest
     $resultRest = mysqli_query($conn, $sqlRest);
+    $resultCustomer = mysqli_query($conn, $sqlCustomer);
 
     
     if ($resultRest->num_rows === 1) {  //if the email is found in restaurants
         header("Location: ../../Menu-master/index.php?email=".$email);
         exit();
-    }else{  //this code will later redirect to customer/driver respectivly but now it just returns to login
-        header("Location: ../index.php");
+    }elseif($resultCustomer->num_rows === 1){ //if the email is found in customers
+        //I'm doing it this way instead of using php's header function because when I try to use
+        //header it sometimes crashes the server and idk why
+        echo "<script>window.location.href=\"../../User_Page/user.html?email=".$email."\"</script>";
+        //header("Location: ../../User_Page/user.html?email=".$email);
+        exit();
+    }else{
+        header("Location: ../Login-Linked/index.php");
         exit();
     }
 
