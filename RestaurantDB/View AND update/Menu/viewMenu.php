@@ -14,6 +14,8 @@
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="menupopup.css">
+         <script src="menupopup.js"></script>
     </head>
     <body>
         <table>
@@ -51,5 +53,45 @@
           ?>
             </tbody>
         </table>
+        
+        
+            <!--Insert Records-->
+        <h1 align="left">
+            Create new Listing
+            <button type="button" class="btn btn-default btn-sm" onclick="openMenuForm()">
+                <span class="glyphicon glyphicon-plus-sign"></span> Plus
+            </button>
+        </h1>
+        <br>
+        <!--create entry popup-->
+        
+        
+          
+
+        
+
+        <div class="form-popup3" id="myForm3">
+            <form action="createMenu.php" class="form-container3" method="post">
+            <h1>Register</h1>
+
+            <label for="iname"><b>Item Name</b></label>
+            <input type="text" placeholder="Enter item Name" name="iname" required>
+
+            <label for="iprice"><b>Item Price</b></label>
+            <input type="text" placeholder="Enter price" name="iprice" required>
+            
+            <label for="icost"><b>Item Production Cost</b></label>
+            <input type="text" placeholder="Enter item production cost" name="icost" required>
+            
+            <label for="description"><b>Description</b></label>
+            <input type="text" placeholder="Enter Item Description" name="description" required>
+
+            <button type="submit" class="btn">Add item</button>
+            <button type="button" class="btn cancel" onclick="closeMenuForm()">Cancel</button>
+          </form>
+            
+        </div>
+
+
     </body>
 </html>
