@@ -64,7 +64,9 @@ and open the template in the editor.
             echo"<td><input type=submit value=\"Update\">";
             echo'<td><Button btn btn-primary btn-lg pull-left name=del>Delete</Button>';
             echo "</form>";
+            
             echo '<form action="Menu/viewMenu.php" method="post">';
+            echo"<input type=hidden name=iid value='".$row['rest_id']."'></td>";
             echo"<td><input type=submit value=\"View Menu\" name=viewMenu>";
             echo'</form></tr>';
           

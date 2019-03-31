@@ -1,7 +1,7 @@
 <?php
     $con = mysqli_connect("localhost","root","toor");
     mysqli_select_db($con, "eatrebs");
-    $sql = "SELECT * FROM items";
+    $sql = "SELECT items.* FROM items INNER JOIN restaurant ON restaurant.rest_id = items.rest_id Where items.rest_id = '{$_POST['iid']}' ";
     $menu = mysqli_query($con,$sql);
 ?>
 <html>
@@ -42,8 +42,8 @@
             echo "<td><input type = text name = \"item_cost\"  value = '".$row['cost']."'</td>";
             echo "<td><input type = text name = \"item_prod_cost\"  value = '".$row['prod_cost']."'</td>";
             echo "<td><input type = text name = \"item_description\"  value = '".$row['description']."'</td>";
-            echo "<td><input type=submit value=\"Update\">";
-            echo '<td><Button btn btn-primary btn-lg pull-left name=del>Delete</Button>';
+            echo "<td><input type=submit value=\"updateMenu\">";
+            echo '<td><Button btn btn-primary btn-lg pull-left name=delMenu>Delete</Button>';
             echo "</form></tr>";
             
             
