@@ -90,7 +90,7 @@ header{
 }
 #banner{
     flex: 1 0 auto;
-    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(images/owner.jpg);
+    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(images/Bar.jpg);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -100,41 +100,10 @@ header{
     align-items: center;
     text-align: center;
 }
-.Description-text p{
-    text-transform: uppercase;
-    color: #ffc914;
-    font-size: 25px;
-    position: relative;
-    align-content: center;
-    
-
-
+.banner-text p{
+    background-color: #8c7373;
+    text-orientation: left;
 }
-.banner-text h3{
-    text-transform: capitalize;
-    font-size: 30px;
-    margin: 10px 0;
-    color: #d9e5d6;
-    
-}
-
-.banner-text a{
-    display: inline-block;
-    m;argin: 10px;
-    text-decoration: none;
-    text-transform: capitalize;
-    font-size: 25px;
-    padding: 10px;
-    color: #ffc914;
-    border: 3px solid #ffc914;
-    background: transparent;
-    transition: color 2s ease, background 2s ease;
-}
-.banner-text a:hover{
-    color: #2e282e;
-    background: #ffc914;
-}
-
 /*##########################################icon section####################################*/
 #icon-section{
     height: 70px;
@@ -183,4 +152,6 @@ header{
     text-transform: capitalize;
     color: #b5c2b7;
 }
+
+
 

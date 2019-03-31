@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="mainAbout.css">
 <!-- icons -->
     <link rel = "stylesheet" href = "fontawesome-free-5.7.1-web/css/all.min.css">
 <!--google fonts-->   
@@ -44,10 +44,7 @@
        </nav>
        <div id="banner">
            <div class="banner-text">
-           <h1>Reb-Eats!</h1>
-           <h3>Eat, Sleep, Deliver Repeat!</h3>
-           <a href="../Form/index.php">Register Now</a>
-           <a href="../index.php">Login</a>
+           <p>RebEats provides our customers with the taste of great restaurants, with the convenience of never having to leave your home! We provide delivery for a vast majority of restaurants associated with your Zipcode! </p>
            </div>
            
     </div>  
