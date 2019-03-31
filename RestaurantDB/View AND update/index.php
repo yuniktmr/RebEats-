@@ -15,9 +15,11 @@ and open the template in the editor.
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="popup.css">
+        <link rel="stylesheet" href="PopupSearch.css">
         <script src="popup.js"></script>
+        <script src="PopupSearch.js"></script>
         <meta charset="UTF-8">
-        <title>jncjdsnvj</title>
+        <title>Owner's view</title>
     </head>
     <body>
         <?php
@@ -32,7 +34,7 @@ and open the template in the editor.
             
         ?>
         <table>
-            <h1 align="center">
+            <h1 align="left">
                 Restaurant Listings
                 <button class="btn">
                     <i class="fa fa-bars"></i>
@@ -61,7 +63,10 @@ and open the template in the editor.
             echo "<td><input type = text name = \"address\"  value = '".$row['address']."'</td>";
             echo"<td><input type=submit value=\"Update\">";
             echo'<td><Button btn btn-primary btn-lg pull-left name=del>Delete</Button>';
-            echo "</form></tr>";
+            echo "</form>";
+            echo '<form action="Menu/viewMenu.php" method="post">';
+            echo"<td><input type=submit value=\"View Menu\" name=viewMenu>";
+            echo'</form></tr>';
           
         }
         $a = mysqli_num_rows($records);
@@ -78,7 +83,7 @@ and open the template in the editor.
         <hr>
         </div>
         <!--Insert Records-->
-        <h1 align="center">
+        <h1 align="left">
             Create new Listing
             <button type="button" class="btn btn-default btn-sm" onclick="openForm()">
                 <span class="glyphicon glyphicon-plus-sign"></span> Plus
@@ -90,7 +95,7 @@ and open the template in the editor.
         
           
 
-    
+        
 
         <div class="form-popup" id="myForm">
             <form action="create.php" class="form-container" method="post">
@@ -108,6 +113,7 @@ and open the template in the editor.
             <button type="submit" class="btn">Register</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
           </form>
+            
         </div>
 
 
@@ -116,30 +122,49 @@ and open the template in the editor.
                 
                 
             
-        </div>
+        
         
         <hr>
         <hr>
         <!--Search Zone-->
-        <h1 align="center">Search Listing</h1>
+        <h1 align="left">Search Listing
+            <button type="button" class="btn btn-default btn-sm" onclick="openFormx()">
+                <span class="glyphicon glyphicon-plus-sign"></span> Search
+            </button>
+        </h1>
+            <div class="form-popupx" id="myFormx">
+            <form action="update.php" class="form-containerx" method="post">
+            <h1>Search</h1>
 
-        <form action ="Search.php" method="post">
-        <br><br>
-            <div class ="search-fields" display:none>
-            <input type ="text" placeholder="ID" name="id"><Br>
-            <input type ="text" placeholder="Restaurant Name" name="rname"><Br>
-            <input type ="text" placeholder="Email" name="email"><Br>
-            <input type ="text" placeholder="Address" name="address">
-        </div>
+            <label for="rname3"><b>Restaurant</b></label>
+            <input type="text" placeholder="Search by Restaurant Name" name="rname3" required>
+
+            <label for="email3"><b>Email</b></label>
+            <input type="text" placeholder="Search by email" name="email3" required>
+            
+            <label for="address3"><b>Address</b></label>
+            <input type="text" placeholder="Search by Address" name="address3" required>
+            
+            <br>
             <div class="search-buttons">
             <<h4>Search by</h4>
             <select><option>ID</option>
             <option>Restaurant Name</option>
             <option>Email</option>
             <option>Address</option></select>
-            <input type= submit value="Search">
-        </div>
-        </form>
+            
+            </div>
+            <Br>
+            <button type="submit" class="btn">Search</button>
+            <button type="button" class="btn cancel" onclick="closeFormx()">Close</button>
+            
+            
+            </form>
+            
+            </div>
+
+            
+       
     </body>
 </html>
 
