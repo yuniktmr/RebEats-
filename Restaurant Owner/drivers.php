@@ -1,16 +1,10 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="">
 <head>
- <script type="text/javascript">
-     window.history.forward();
-    </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="mainDrivers.css">
 <!-- icons -->
     <link rel = "stylesheet" href = "fontawesome-free-5.7.1-web/css/all.min.css">
 <!--google fonts-->   
@@ -30,10 +24,10 @@
            </div>
            <ul class="nav-links">
                <li><a href="index.php">Home</a></li>
-               <li><a href="services.php">Services</a></li>
-               <li><a href="about.php">About</a></li>
-               <li><a href="locations.php">Locations</a></li>
-               <li><a href="contacts.php">Contacts</a></li>
+               <li><a href="menu.php">Menu</a></li>
+               <li><a href="drivers.php">Drivers</a></li>
+               <li><a href="order.php">Orders</a></li>
+               <li><a href="../Login-Linked/index.php">Logout</a></li>
                <li class = "nav-icons">
                    <a href="#"><i class="fab fa-facebook"></i></a>
                    <a href="#"><i class="fab fa-instagram"></i></a>
@@ -43,11 +37,8 @@
            </ul>
        </nav>
        <div id="banner">
-           <div class="banner-text">
-           <h1>Reb-Eats!</h1>
-           <h3>Eat, Sleep, Deliver Repeat!</h3>
-           <a href="../Form/index.php">Register Now</a>
-           <a href="../index.php">Login</a>
+           <div class="Description-text">
+           <p>Drivers</p>
            </div>
            
     </div>  
