@@ -16,7 +16,8 @@
 
     
     if ($resultRest->num_rows === 1) {  //if the email is found in restaurants
-        header("Location: ../../Menu-master/index.php?email=".$email);
+        //header("Location: ../../Menu-master/index.php?email=".$email);
+        header("Location: ../../restOwnerBarebones/index.php?email=".$email);
         exit();
     }elseif($resultCustomer->num_rows === 1){ //if the email is found in customers
         //I'm doing it this way instead of using php's header function because when I try to use
