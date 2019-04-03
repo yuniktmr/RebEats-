@@ -82,6 +82,8 @@ function register(){
 
         var errorCode = error.code;
 
+        console.log(errorCode);
+
         if(errorCode === "auth/email-already-in-use"){ //if there's already an account with the given email
             alert("There is already an account assoicated with that email");
         }else if(errorCode === "auth/invalid-email"){ //if the input doesn't fit the format of an email
