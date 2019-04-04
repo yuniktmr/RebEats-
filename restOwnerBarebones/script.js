@@ -1,34 +1,16 @@
 
-var itemIDs = []
+function logout(){
 
-function deleteItem(itemID){
+    var user = firebase.auth().currentUser;
 
-    this.itemIDs.push(itemID)
+    console.log(user.email)
 
-    document.getElementById(itemID).parentElement.setAttribute("style", "display: none")
+    firebase.auth().signOut().then(function() {
+        
+        window.location.href="../login-linked/index.php"
 
-}
-
-function deleteItems(email){
-
-    console.log(email)
-
-    if(itemIDs.length > 0){
-
-        var link = "deleteItems.php?email="+email
-
-        for (i = 0; i<this.itemIDs.length;i++){
-            link += "&item"+i+"="+this.itemIDs[i]
-        }
-
-        window.location.href=link
-
-    }
-
-}
-
-function altDeleteItem(email, itemID){
-
-    window.location.href="deleteItems.php?email="+email+"&item="+itemID
+      }, function(error) {
+        // An error happened.
+      });
 
 }
