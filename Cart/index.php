@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    $con = mysqli_connect("localhost", "root", "","eatrebs");
+    $con = mysqli_connect("localhost", "root", "olemiss2019","eatrebs");
      
     if(isset($_POST['add'])){
         if(isset($_SESSION['index'])){
