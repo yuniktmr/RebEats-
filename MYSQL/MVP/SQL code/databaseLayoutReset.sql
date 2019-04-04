@@ -34,8 +34,8 @@ CREATE TABLE items (
   item_id INT(11) NOT NULL AUTO_INCREMENT,
   rest_id INT(11) NOT NULL,
   cost decimal(13,2) NOT NULL,
-  prod_cost DECIMAL(13,2) NOT NULL,
   name VARCHAR(255) NOT NULL,
+  images VARCHAR(255) NULL,
   description TEXT NULL DEFAULT NULL,
   PRIMARY KEY (item_id)
 )ENGINE = InnoDB;

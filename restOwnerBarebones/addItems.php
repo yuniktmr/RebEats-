@@ -9,8 +9,8 @@
 
     if($name != "" && $price != "" && $description != ""){
 
-        $query = "INSERT INTO `items` (rest_id, cost, prod_cost, `name`, `description`)
-        VALUES ((SELECT `rest_id` FROM `restaurants` WHERE `email` = '".$email."'), ".$price.", 0, '".$name."', '".$description."');";
+        $query = "INSERT INTO `items` (rest_id, cost, `name`, `description`)
+        VALUES ((SELECT `rest_id` FROM `restaurants` WHERE `email` = '".$email."'), ".$price.", '".$name."', '".$description."');";
 
         mysqli_query($conn, $query);
 

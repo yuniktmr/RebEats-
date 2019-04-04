@@ -45,7 +45,7 @@
         //MySQL Statement that adds the record
         $sql = "INSERT INTO restaurants(email, rest_name, address, pNumber, zipcode, open, close)
         VALUES ('$email', '$restName', '$restAddress', '$restPNumber', '$restZipcode', '$restOpen', '$restClose');";
-
+        error_log($conn);
         //sends $sql as a qeury to the database
         mysqli_query($conn, $sql);
     }

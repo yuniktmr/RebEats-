@@ -26,7 +26,7 @@
         //header("Location: ../../User_Page/user.html?email=".$email);
         exit();
     }else{
-        header("Location: ../Login-Linked/index.php");
+        header("Location: ../index.php");
         exit();
     }
 
