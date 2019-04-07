@@ -22,7 +22,7 @@
     }elseif($resultCustomer->num_rows === 1){ //if the email is found in customers
         //I'm doing it this way instead of using php's header function because when I try to use
         //header it sometimes crashes the server and idk why
-        echo "<script>window.location.href=\"../../Cart/index.php?email=".$email."\"</script>";
+        echo "<script>window.location.href=\"../../Customer/index.php?email=".$email."\"</script>";
         //header("Location: ../../User_Page/user.html?email=".$email);
         exit();
     }else{
