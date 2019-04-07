@@ -3,7 +3,7 @@
         function displayItems(){
             $con = mysqli_connect("localhost", "root","olemiss2019","");
             $result = mysqli_select_db($con, "eatrebs");
-            if ($sql = mysqli_prepare($con, "SELECT name, images,description, cost FROM items where name REGEXP concat('^',?)" )){
+            if ($sql = mysqli_prepare($con, "SELECT R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id" )){
                 $sql ->bind_param("s", $_POST['isearch']); 
                 $sql -> execute();
                 $result = $sql ->get_result();
@@ -21,7 +21,7 @@
                     <p class="card-text"><?php echo $row['description'];?></p>
                     </div>
                    <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted">Restaurant name: <?php echo $row['rest_name'];?></small>
                 </div>
            </div>
   
@@ -102,7 +102,7 @@
   <h1 class="display-4">RebEats!</h1>
   <p class="lead">Founded in 2019 by a group of five industrious individuals, RebEats allows you to choose from a wide variety of items from multiple restaurants under our wing.</p>
   <p>Not only that, we ensure the food you order gets delivered
-  to your doorsteps at a very reasonable price almost instantly.</p>
+  to your doorsteps at a very reasonable price almost instantaneously.</p>
   <hr class="my-4">
   <p>Search for Food items</p>
     <form class="form-inline my-2 my-lg-0" action="searchItem.php" method="POST">
