@@ -1,4 +1,34 @@
 <?php
+
+ if(isset($_POST['add'])){
+        if(isset($_SESSION['cart'])){
+            $item_array_id = array_column($_SESSION['cart'], "product_id");
+            if(!in_array($_GET['item_id'],$item_array_id)){
+                $count = count($_SESSION['cart']);
+                $item_array = array(
+                    'product_id' => $_GET['item_id'],
+                    'item_name' => $_POST['hidden_name'],
+                    'product_price' => $_POST['hidden_price'],
+                    'item_quantity' => $_POST['quantity'],
+                );
+                $_SESSION['cart'][$count] = $item_array;
+                echo'<script>window.location="cart.php"</script>';
+            }else{
+                echo '<script>alert("Product already in the cart")</script>';
+                echo '<script>window.location="cart.php"</script>';
+            }
+    }else{
+        $item_array = array(
+            'product_id' => $_GET['item_id'],
+                    'item_name' => $_POST['hidden_name'],
+                    'product_price' => $_POST['hidden_price'],
+                    'item_quantity' => $_POST['quantity'],
+        );
+        $_SESSION['cart'][0] = $item_array;
+    }
+    }
+?>
+<?php
     
         function displayItems(){
             $con = mysqli_connect("localhost", "root","olemiss2019","");
@@ -19,13 +49,24 @@
                     <h5 class="card-title"><?php echo $row['name'];?></h5>
                     <p class="card-text"><?php echo "$".$row['cost'];?></p>
                     <p class="card-text"><?php echo $row['description'];?></p>
+                    <div class="form-group">
+                    <form method ="post" action='cart.php?action=add&item_id=<?php echo $row["item_id"]?>'>
+                    
+                        <input type ="text" name="description" class="form-control" placeholder="Any specifications?">
+                        <input type ="text" name="quantity" placeholder="Quantity" class="form-control">
+                        <input type ="hidden" name="hidden_name" value="<?php echo $row["name"];?>">
+                         <input type ="hidden" name="hidden_price" value="<?php echo $row["cost"];?>">
+                         <input type="submit" name="add" style="margin-top: 5px;" class ="btn btn-success" value="Add to cart"> 
+                      
+                    </form>
+                    </div>
                     </div>
                    <div class="card-footer">
-                <small class="text-muted">Restaurant name: <?php echo $row['rest_name'];?></small>
+                <small class="text-muted">Restaurant Name: <?php echo $row['rest_name'];?></small>
                 </div>
            </div>
   
-        </div>
+        </di>
 
 <?php          
                 }
@@ -44,7 +85,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Custom</title>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -61,7 +102,8 @@
         width: 25%;
         height: 25%;
         object-fit: cover;
-}
+        }
+        
     </style>
     <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -108,7 +150,12 @@
     <form class="form-inline my-2 my-lg-0" action="searchItem.php" method="POST">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" name="isearch" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="itemSearch">Search</button>
+      <!-- Example split danger button -->
+      
+      <i class="fas fa-sort-amount-down"></i>
+      
     </form>
+  
   <br>
   <?php 
     if (isset($_POST['itemSearch'])){
