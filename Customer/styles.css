@@ -1,0 +1,32 @@
+body{
+	background:url(background.jpg);
+	background-size: cover;
+}
+#welcome{
+	font-family: 'Signika Negative', sans-serif;
+	text-align: left;
+	margin-top: 10px;
+	margin-left: 5px; 
+	color: #d8d3cb;
+}
+#message{
+	text-align: justify;
+	margin-top: 60px;
+	margin-left: 5px;
+	width: 40%;
+	color: #d8d3cb;
+	font-size: 18px;
+	padding-top: 15px;
+}
+#support{
+	color: #d8d3cb;
+	text-align: center;
+	width: 20%;
+	border: 2px solid #d8d3cb;
+	border-radius: 8px;
+	padding: 0 2px 0 2px;
+	margin-top: 250px;
+	margin-left: 2px
+	font-family: 'Signika Negative', sans-serif;
+	
+}

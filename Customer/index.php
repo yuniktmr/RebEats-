@@ -6,6 +6,8 @@ and open the template in the editor.
 -->
 <html>
     <head>
+    	<link href="https://fonts.googleapis.com/css?family=Signika+Negative" rel="stylesheet">
+    	<link rel="stylesheet" type="text/css" href="styles.css">
         <meta charset="UTF-8">
         <title>Custom</title>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -57,5 +59,9 @@ and open the template in the editor.
     </form>
   </div>
 </nav>
+<h1 id="welcome">Welcome To RebEats!</h1>
+<p id="message">We're excited you've chosen to do your business with us! We've done our best to make our website as easy as possible! Use the search bar to search for any dishes or restaurants you want, and then add them to your cart. We hope you enjoy our service!</p>
+<pre id="support">For assistance: 662-115-7847
+Monday-Friday: 8am-5pm</pre>
     </body>
 </html>
