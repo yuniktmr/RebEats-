@@ -66,6 +66,7 @@ and open the template in the editor.
     </form>
   </div>
 </nav>
+        <br>
         
         
       <?php
@@ -82,7 +83,7 @@ and open the template in the editor.
                 if ($A>0)   
                 {
                 while($row = $result->fetch_array()){
-?>
+?>  
               <div class="card-deck">
                     <div class="card">
                         <img class="card-img-top" src='<?php echo $row["images"];?>' alt="Card image cap">

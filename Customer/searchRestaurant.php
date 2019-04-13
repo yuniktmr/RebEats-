@@ -198,6 +198,7 @@ and open the template in the editor.
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="itemSearch">Search</button>
   <!--<input type="submit">-->
 </form>
+  <br>
   <?php 
   if(isset($_GET['filter'])){
     if($_GET['filter']=='Food'){
