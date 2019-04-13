@@ -1,48 +1,117 @@
-<?php
-     
-        function displayRestaurant(){
-            $con = mysqli_connect("localhost", "root","olemiss2019","");
-            $result = mysqli_select_db($con, "eatrebs");
-            if ($sql = mysqli_prepare($con, "SELECT rest_name, address, pNumber, zipcode FROM restaurants" )){
-                 $sql -> execute();
-                 $sql -> close();
+<?php 
+    function food(){
+        $con = mysqli_connect("localhost","root","olemiss2019","");
+        $result = mysqli_select_db($con, "eatrebs");
+       
+            if ($sql = mysqli_prepare($con, "SELECT I.item_id, I.cost, R.rest_name, R.images, R.address, R.pNumber, R.zipcode FROM restaurants R INNER JOIN items I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id")){
+                 $sql ->bind_param("s", $_POST['isearch']);  
+                $sql -> execute();
+                
+                 $result= $sql ->get_result();
+                 $A = $result -> num_rows;
+                if ($A>0)   
+                {
+                while($row = $result->fetch_array()){
+?>
+              <div class="card-deck">
+                    <div class="card">
+                        <img class="card-img-top" src='<?php echo $row["images"];?>' alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title"><?php echo $row['rest_name'];?></h5>
+                  <p class="card-text">Price: <?php echo "$".$row['cost'];?></p>
+                  <form action="viewMenu.php">
+                    <button type="submit" class="btn btn-danger">View Menu</button>
+                  </form>
+                    </div>
+<?php          
+                }
+                
+                }else{
+                    echo "<br><br>";
+                    echo "<h3>No search results corresponding to your entry</h3>";
+                }
             }else{
                 echo "Error";
             }
-         
+    }
+    
+    function Named(){
+     $con = mysqli_connect("localhost","root","olemiss2019","");
+        $result = mysqli_select_db($con, "eatrebs");
+      
+            if ($sql = mysqli_prepare($con, "SELECT  R.rest_name, R.address, R.images,R.pNumber, R.zipcode FROM restaurants R  where R.rest_name REGEXP concat('^',?)")){
+                 $sql ->bind_param("s", $_POST['isearch']);  
+                $sql -> execute();
+                
+                 $result= $sql ->get_result();
+                 $A = $result -> num_rows;
+                if ($A>0)   
+                {
+                while($row = $result->fetch_array()){
 ?>
-                <table class="table table-hover table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+              <div class="card-deck">
+                    <div class="card">
+                        <img class="card-img-top" src='<?php echo $row["images"];?>' alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title"><?php echo $row['rest_name'];?></h5>
+                    <p class="card-text"><?php echo "Address: ".$row['address'];?></p>
+                   <p class="card-text"><?php echo "Zipcode: ".$row['zipcode'];?></p>
+                   <form action="viewMenu.php">
+                   <button type="submit" class="btn btn-danger">View Menu</button>
+                   </form>
+                    </div>   
 <?php          
-}
-         
+                }
+                
+                }else{
+                    echo "<br><br>";
+                    echo "<h3>No search results corresponding to your entry</h3>";
+                }
+            }else{
+                echo "Error";
+            }
+    }
+    
+   
+    
+    function Zipcode(){
+        
+        $con = mysqli_connect("localhost","root","olemiss2019","");
+        $result = mysqli_select_db($con, "eatrebs");
+      
+            if ($sql = mysqli_prepare($con, "SELECT  R.rest_name, R.address, R.images, R.pNumber, R.zipcode FROM restaurants R  where R.zipcode = ?")){
+                 $sql ->bind_param("d", $_POST['isearch']);  
+                $sql -> execute();
+                
+                 $result= $sql ->get_result();
+                 $A = $result -> num_rows;
+                if ($A>0)   
+                {
+                while($row = $result->fetch_array()){
+?>
+              <div class="card-deck">
+                    <div class="card">
+                        <img class="card-img-top" src='<?php echo $row["images"];?>' alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title"><?php echo $row['rest_name'];?></h5>
+                    <p class="card-text"><?php echo "Address: ".$row['address'];?></p>
+                   <p class="card-text"><?php echo "Zipcode: ".$row['zipcode'];?></p>
+                   <form action ="viewMenu.php">
+                   <button type="submit" class="btn btn-danger">View Menu</button>
+                   </form>
+                    </div>
+<?php          
+                }
+                
+                }else{
+                    echo "<br><br>";
+                    echo "<h3>No search results corresponding to your entry</h3>";
+                }
+            }else{
+                echo "Error";
+            }
+    }
+    
 ?>
 <!DOCTYPE html>
 <!--
@@ -67,6 +136,11 @@ and open the template in the editor.
             padding-left:30px;
             padding-right:30px;
 }
+.card-img-top {
+        width: 35vh;
+        height: 25vh;
+        object-fit: cover;
+        }
     </style>
     <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -110,14 +184,28 @@ and open the template in the editor.
   to your doorsteps at a very reasonable price almost instantly.</p>
   <hr class="my-4">
   <p>Search for Restaurants</p>
-    <form class="form-inline my-2 my-lg-0" action="searchRestaurant.php" method="POST">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="rsearch" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" name="restSearch" type="submit">Search</button>
-    </form>
-    <?php 
-    if (isset($_POST['restSearch'])){
-        displayRestaurant();
+    <form class="form-inline my-2 my-lg-0"  method ="POST">
+  <label for="sel1"></label>
+  <select class="form-control" id="sel1" name="filter" method="POST">
+    <option name="Food">Food</option>
+    <option name="RestaurantName">RestaurantName</option>
+    <option name="Zipcode">Zipcode</option>
+    
+  </select>
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" name="isearch" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="itemSearch">Search</button>
+  <!--<input type="submit">-->
+</form>
+  <?php 
+  if(isset($_POST['filter'])){
+    if($_POST['filter']=='Food'){
+        food();
+    }elseif ($_POST['filter']=='RestaurantName'){
+        Named();
+    }else{
+        Zipcode();
     }
+  }
   ?>
 </div>
     </body>

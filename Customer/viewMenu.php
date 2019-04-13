@@ -4,7 +4,6 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -22,6 +21,11 @@ and open the template in the editor.
             padding-left:30px;
             padding-right:30px;
 }
+.card-img-top {
+        width: 35vh;
+        height: 25vh;
+        object-fit: cover;
+        }
     </style>
     <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -43,8 +47,8 @@ and open the template in the editor.
           Search for
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="searchRestaurant.php">Restaurant</a>
-          <div class="dropdown-divider"></div>
+            
+          
           <a class="dropdown-item" href="searchItem.php">Food</a>
           
           
@@ -58,5 +62,3 @@ and open the template in the editor.
     </form>
   </div>
 </nav>
-    </body>
-</html>

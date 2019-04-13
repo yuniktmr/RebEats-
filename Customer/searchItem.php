@@ -1,8 +1,8 @@
 <?php
-
  if(isset($_POST['add'])){
         if(isset($_SESSION['cart'])){
             $item_array_id = array_column($_SESSION['cart'], "product_id");
+            
             if(!in_array($_GET['item_id'],$item_array_id)){
                 $count = count($_SESSION['cart']);
                 $item_array = array(
@@ -12,7 +12,9 @@
                     'item_quantity' => $_POST['quantity'],
                 );
                 $_SESSION['cart'][$count] = $item_array;
+                
                 echo'<script>window.location="cart.php"</script>';
+            
             }else{
                 echo '<script>alert("Product already in the cart")</script>';
                 echo '<script>window.location="cart.php"</script>';
@@ -33,7 +35,7 @@
         function displayItems(){
             $con = mysqli_connect("localhost", "root","olemiss2019","");
             $result = mysqli_select_db($con, "eatrebs");
-            if ($sql = mysqli_prepare($con, "SELECT R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id" )){
+            if ($sql = mysqli_prepare($con, "SELECT I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id" )){
                 $sql ->bind_param("s", $_POST['isearch']); 
                 $sql -> execute();
                 $result = $sql ->get_result();
@@ -69,7 +71,8 @@
         </div>
 
 <?php          
-                }
+                 }
+              
                 }else{
                     echo "<br><br>";
                     echo "<h3>No search results corresponding to your entry</h3>";
@@ -85,10 +88,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Custom</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
       
 

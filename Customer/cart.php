@@ -1,7 +1,8 @@
 <?php 
     session_start();
     $con = mysqli_connect("localhost", "root", "olemiss2019","eatrebs");
-     
+   
+    
     if(isset($_POST['add'])){
         if(isset($_SESSION['cart'])){
             $item_array_id = array_column($_SESSION['cart'], "product_id");
@@ -14,7 +15,9 @@
                     'item_quantity' => $_POST['quantity'],
                 );
                 $_SESSION['cart'][$count] = $item_array;
+                
                 echo'<script>window.location="cart.php"</script>';
+            
             }else{
                 echo '<script>alert("Product already in the cart")</script>';
                 echo '<script>window.location="cart.php"</script>';
@@ -48,21 +51,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
       
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.css">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.css">-->
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
         <style>
             body{
                 font-family: 'Raleway', sans-serif;
@@ -110,12 +113,55 @@
             table th{
                 background-color: #efefef;
             }
+                  .navbar-nav > li{
+            padding-left:30px;
+            padding-right:30px;
+            }
+           .card-img-top {
+        width: 35vh;
+        height: 25vh;
+        object-fit: cover;
+        }
         </style>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#"><img src="rebeats2.png"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="cart.php">Order Cart</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Search for
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            
+          
+          <a class="dropdown-item" href="searchItem.php">Food</a>
+          
+          
+        </div>
+      </li>
+      
+    </ul>
+      <form class="form-inline my-2 my-lg-0" action="searchRestaurant.php" method="POST">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
         <div class ="container" style="width:65%">
             <h2> Shopping Cart <i class="fas fa-shopping-cart"></i> </h2>
-            
+            <!--
              <?php
                 $query= "SELECT * FROM items ORDER BY item_id ASC";
                 $result = mysqli_query($con, $query);
@@ -144,7 +190,7 @@
                     }
                 }
                 ?>
-                
+                -->
                 <div style ="clear: both"></div>
                 <h3 class ="title2"> Order cart details </h3>
                 <div class="table-responsive">
@@ -178,7 +224,7 @@
                         <td colspan ="3" align ="right">Total </td>
                         <th align ="right">$<?php echo number_format($total, 2 , '.', '');?></th>
                         <td colspan="3" rowspan="2" vertical-align="top"><input type="submit" name="add" style="margin-top: 3px;" class ="btn btn-primary" value="Checkout"></td>
-                        <td></td>
+                        
                     </tr>
                         <?php } ?>
                         </table>
