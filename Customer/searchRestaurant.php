@@ -1,12 +1,16 @@
 <?php 
+session_start();
+    function assign($count){
+        
+    }
     function food(){
         $con = mysqli_connect("localhost","root","olemiss2019","");
         $result = mysqli_select_db($con, "eatrebs");
        
             if ($sql = mysqli_prepare($con, "SELECT I.item_id, I.cost, R.rest_name, R.images, R.address, R.pNumber, R.zipcode FROM restaurants R INNER JOIN items I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id")){
-                 $sql ->bind_param("s", $_POST['isearch']);  
+                 $sql ->bind_param("s", $_GET['isearch']);  
                 $sql -> execute();
-                
+                $_SESSION['REST'] = $_GET['isearch'];
                  $result= $sql ->get_result();
                  $A = $result -> num_rows;
                 if ($A>0)   
@@ -19,10 +23,10 @@
                     <div class="card-body">
                     <h5 class="card-title"><?php echo $row['rest_name'];?></h5>
                   <p class="card-text">Price: <?php echo "$".$row['cost'];?></p>
-                  <form action="viewMenu.php">
-                    <button type="submit" class="btn btn-danger">View Menu</button>
-                  </form>
+                  <button type="submit" class="btn btn-danger"><a href="viewMenu.php?name=<?php echo $row['rest_name'];?>" style="color:white">View Menu</a></button>
+                  
                     </div>
+                    
 <?php          
                 }
                 
@@ -40,9 +44,10 @@
         $result = mysqli_select_db($con, "eatrebs");
       
             if ($sql = mysqli_prepare($con, "SELECT  R.rest_name, R.address, R.images,R.pNumber, R.zipcode FROM restaurants R  where R.rest_name REGEXP concat('^',?)")){
-                 $sql ->bind_param("s", $_POST['isearch']);  
+                 $sql ->bind_param("s", $_GET['isearch']); 
+                  
                 $sql -> execute();
-                
+                $_SESSION['REST'] = $_GET['isearch'];
                  $result= $sql ->get_result();
                  $A = $result -> num_rows;
                 if ($A>0)   
@@ -56,9 +61,7 @@
                     <h5 class="card-title"><?php echo $row['rest_name'];?></h5>
                     <p class="card-text"><?php echo "Address: ".$row['address'];?></p>
                    <p class="card-text"><?php echo "Zipcode: ".$row['zipcode'];?></p>
-                   <form action="viewMenu.php">
-                   <button type="submit" class="btn btn-danger">View Menu</button>
-                   </form>
+                   <button type="submit" class="btn btn-danger"><a href="viewMenu.php?name=<?php echo $row['rest_name'];?>" style="color:white">View Menu</a></button>
                     </div>   
 <?php          
                 }
@@ -80,9 +83,10 @@
         $result = mysqli_select_db($con, "eatrebs");
       
             if ($sql = mysqli_prepare($con, "SELECT  R.rest_name, R.address, R.images, R.pNumber, R.zipcode FROM restaurants R  where R.zipcode = ?")){
-                 $sql ->bind_param("d", $_POST['isearch']);  
+                 $sql ->bind_param("d", $_GET['isearch']);  
+                 
                 $sql -> execute();
-                
+                 $_SESSION['REST'] = $_GET['isearch'];
                  $result= $sql ->get_result();
                  $A = $result -> num_rows;
                 if ($A>0)   
@@ -96,9 +100,7 @@
                     <h5 class="card-title"><?php echo $row['rest_name'];?></h5>
                     <p class="card-text"><?php echo "Address: ".$row['address'];?></p>
                    <p class="card-text"><?php echo "Zipcode: ".$row['zipcode'];?></p>
-                   <form action ="viewMenu.php">
-                   <button type="submit" class="btn btn-danger">View Menu</button>
-                   </form>
+                   <button type="submit" class="btn btn-danger"><a href="viewMenu.php?name=<?php echo $row['rest_name'];?>" style="color:white">View Menu</a></button>
                     </div>
 <?php          
                 }
@@ -171,7 +173,7 @@ and open the template in the editor.
       </li>
       
     </ul>
-      <form class="form-inline my-2 my-lg-0" action="searchRestaurant.php" method="POST">
+      <form class="form-inline my-2 my-lg-0" action="searchRestaurant.php" method="GET">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
@@ -184,9 +186,9 @@ and open the template in the editor.
   to your doorsteps at a very reasonable price almost instantly.</p>
   <hr class="my-4">
   <p>Search for Restaurants</p>
-    <form class="form-inline my-2 my-lg-0"  method ="POST">
+    <form class="form-inline my-2 my-lg-0"  method ="GET">
   <label for="sel1"></label>
-  <select class="form-control" id="sel1" name="filter" method="POST">
+  <select class="form-control" id="sel1" name="filter" method="GET">
     <option name="Food">Food</option>
     <option name="RestaurantName">RestaurantName</option>
     <option name="Zipcode">Zipcode</option>
@@ -197,10 +199,10 @@ and open the template in the editor.
   <!--<input type="submit">-->
 </form>
   <?php 
-  if(isset($_POST['filter'])){
-    if($_POST['filter']=='Food'){
+  if(isset($_GET['filter'])){
+    if($_GET['filter']=='Food'){
         food();
-    }elseif ($_POST['filter']=='RestaurantName'){
+    }elseif ($_GET['filter']=='RestaurantName'){
         Named();
     }else{
         Zipcode();

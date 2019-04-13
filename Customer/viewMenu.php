@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -22,6 +25,7 @@ and open the template in the editor.
             padding-right:30px;
 }
 .card-img-top {
+        padding-left: 3vh;
         width: 35vh;
         height: 25vh;
         object-fit: cover;
@@ -62,3 +66,59 @@ and open the template in the editor.
     </form>
   </div>
 </nav>
+        
+        
+      <?php
+            session_start();
+            
+            $con = mysqli_connect("localhost", "root","olemiss2019","");
+            $result = mysqli_select_db($con, "eatrebs");
+            
+            if ($sql = mysqli_prepare($con, "SELECT I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where R.rest_name REGEXP concat('^',?) AND R.rest_id = I.rest_id" )){
+                $sql ->bind_param("s", $_GET['name']); 
+                $sql -> execute();
+                $result = $sql ->get_result();
+                $A = $result -> num_rows;
+                if ($A>0)   
+                {
+                while($row = $result->fetch_array()){
+?>
+              <div class="card-deck">
+                    <div class="card">
+                        <img class="card-img-top" src='<?php echo $row["images"];?>' alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title"><?php echo $row['name'];?></h5>
+                    <p class="card-text"><?php echo "$".$row['cost'];?></p>
+                    <p class="card-text"><?php echo $row['description'];?></p>
+                    <div class="form-group">
+                    <form method ="post" action='cart.php?action=add&item_id=<?php echo $row["item_id"]?>'>
+                    
+                        <input type ="text" name="description" class="form-control" placeholder="Any specifications?">
+                        <input type ="text" name="quantity" placeholder="Quantity" class="form-control">
+                        <input type ="hidden" name="hidden_name" value="<?php echo $row["name"];?>">
+                         <input type ="hidden" name="hidden_price" value="<?php echo $row["cost"];?>">
+                         <input type="submit" name="add" style="margin-top: 5px;" class ="btn btn-success" value="Add to cart"> 
+                        <button type="submit" style="margin-top: 5px;" class="btn btn-warning center-block"><a href="javascript:history.go(-1)" style="color:white">Back to Listings</a></button>
+                    </form>
+                         
+                    </div>
+                    </div>
+                   <div class="card-footer">
+                <small class="text-muted">Restaurant Name: <?php echo $row['rest_name'];?></small>
+                </div>
+           </div>
+  
+        </div>
+
+<?php          
+                 }
+              
+                }else{
+                    echo "<br><br>";
+                    echo "<h3>No search results corresponding to your entry</h3>";
+                }
+            }else{
+                    echo("Error");
+            }  
+        
+?>

@@ -230,9 +230,8 @@
                         </table>
                 </div>
                 
-                <form action="index.php" method="POST">
-                <button type="submit" class="btn btn-warning center-block">Return to Home</button>
-                </form>
+                <button type="submit" class="btn btn-warning center-block"><a href="javascript:history.go(-1)" style="color:white">Back to Selection</a></button>
+                
         </div>
     </body>
 </html>
