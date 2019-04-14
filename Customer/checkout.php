@@ -95,7 +95,7 @@
                                                     <td><input type="hidden" name="iquantity"><?php echo $value['item_quantity']; ?></input></td>
                                                     <td><input type="hidden" name="iprice">$<?php echo $value['product_price']; ?></input></td>
                                                     <td><input type="hidden" name="icost">$<?php echo number_format(($value['item_quantity'] * $value['product_price']), 2, '.', ''); ?></input></td>
-                                                    <td><input type="hidden" name="rname"><?php
+                                                    <td><input type="hidden" name="desc"><?php
                                                         if (isset($value['descript'])) {
                                                             echo $value['descript'];
                                                         } else {
@@ -111,7 +111,7 @@
                                             <tr>
                                                 <td colspan ="3" align ="right">Total </td>
                                                 <th align ="right"><input type="hidden" name="Total">$<?php echo number_format($total, 2, '.', ''); ?></input></th>
-
+                                                <td> <button type="submit" class="btn btn-warning center-block" style="margin-top: 0px; padding:5px;"><a href="cart.php" style="color:white">Back to Cart</a></button></td>
                                         </form>
                                         </td>
 
@@ -173,4 +173,4 @@
                     </div>
                 </div>
             </div>
-        </div>
+           

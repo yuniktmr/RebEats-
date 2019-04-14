@@ -214,7 +214,7 @@ if (isset($_GET["action"])) {
                                     <td><input type="hidden" name="iquantity"><?php echo $value['item_quantity']; ?></input></td>
                                     <td><input type="hidden" name="iprice">$<?php echo $value['product_price']; ?></input></td>
                                     <td><input type="hidden" name="rname"><?php echo $value['restaurant_name']; ?></input></td>
-                                    <td><input type="hidden" name="rname"><?php
+                                    <td><input type="hidden" name="desc"><?php
                                         if (isset($value['descript'])) {
                                             echo $value['descript'];
                                         } else {
@@ -241,9 +241,9 @@ if (isset($_GET["action"])) {
                     <?php } ?>
                 </table>
             </div>
-
-            <button type="submit" class="btn btn-warning center-block"><a href="javascript:history.go(-1)" style="color:white">Back to Selection</a></button>
-
+           
+            <button type="submit" class="btn btn-warning center-block"><a href="searchRestaurant.php" style="color:white">Back to Selection</a></button>
+            
         </div>
     </body>
 </html>
