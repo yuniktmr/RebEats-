@@ -1,8 +1,6 @@
 <?php 
     session_start();
     $con = mysqli_connect("localhost", "root", "olemiss2019","eatrebs");
-   
-    
     if(isset($_POST['add'])){
         if(isset($_SESSION['cart'])){
             $item_array_id = array_column($_SESSION['cart'], "product_id");
@@ -13,6 +11,7 @@
                     'item_name' => $_POST['hidden_name'],
                     'product_price' => $_POST['hidden_price'],
                     'item_quantity' => $_POST['quantity'],
+                    'restaurant_name' => $_POST['rest_name'],
                 );
                 $_SESSION['cart'][$count] = $item_array;
                 
@@ -28,6 +27,7 @@
                     'item_name' => $_POST['hidden_name'],
                     'product_price' => $_POST['hidden_price'],
                     'item_quantity' => $_POST['quantity'],
+                     'restaurant_name' => $_POST['rest_name'],
         );
         $_SESSION['cart'][0] = $item_array;
     }
@@ -144,8 +144,8 @@
           Search for
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            
-          
+            <a class="dropdown-item" href="searchRestaurant.php">Restaurant</a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="searchItem.php">Food</a>
           
           
@@ -199,7 +199,9 @@
                         <th width ="30%"> Item Name</th>
                         <th width ="10%"> Quantity</th>
                         <th width ="13%"> Price details</th>
+                        <th width ="17%"> Rest name</th>
                         <th width ="17%"> Total price</th>
+                        
                         <th width ="45%"> Remove items</th>
                     </tr>
                     <?php
@@ -208,11 +210,13 @@
                             foreach ($_SESSION["cart"] as $key => $value){
                         
                     ?>
+                     <form action="checkout.php" method ="POST">
                     <tr>
-                        <td><?php echo $value['item_name']; ?></td>
-                        <td><?php echo $value['item_quantity']; ?></td>
-                        <td>$<?php echo $value['product_price']; ?></td>
-                        <td>$<?php echo number_format (($value['item_quantity'] * $value['product_price']), 2,'.','' );?></td>
+                        <td><input type="hidden" name="iname"><?php echo $value['item_name']; ?></input></td>
+                        <td><input type="hidden" name="iquantity"><?php echo $value['item_quantity']; ?></input></td>
+                        <td><input type="hidden" name="iprice">$<?php echo $value['product_price']; ?></input></td>
+                        <td><input type="hidden" name="rname"><?php echo $value['restaurant_name']; ?></input></td>
+                        <td><input type="hidden" name="icost">$<?php echo number_format (($value['item_quantity'] * $value['product_price']), 2,'.','' );?></input></td>
                         <td><a href="cart.php?action=delete&item_id=<?php echo $value['product_id']?>"><span class = "text-danger" >Remove item</span></td>
                     </tr>
                     <?php 
@@ -222,8 +226,12 @@
                         ?>
                     <tr>
                         <td colspan ="3" align ="right">Total </td>
-                        <th align ="right">$<?php echo number_format($total, 2 , '.', '');?></th>
-                        <td colspan="3" rowspan="2" vertical-align="top"><input type="submit" name="add" style="margin-top: 3px;" class ="btn btn-primary" value="Checkout"></td>
+                        <th align ="right"><input type="hidden" name="Total">$<?php echo number_format($total, 2 , '.', '');?></input></th>
+                        <td colspan="3" rowspan="2" vertical-align="top">
+                           
+                            <input type="submit" name="add" style="margin-top: 3px;" class ="btn btn-primary" value="Checkout">
+                            </form>
+                        </td>
                         
                     </tr>
                         <?php } ?>
