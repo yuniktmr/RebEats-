@@ -94,6 +94,7 @@
                                             ?>
                                     <form action="ordersConfirmation.php" method ="POST">
                                                 <tr>
+                                                    <input type="hidden" name="iid" value="<?php echo $value['product_id']; ?>"></input></td>
                                                     <td><input type="hidden" name="iname"><?php echo $value['item_name']; ?></input></td>
                                                     <td><input type="hidden" name="iquantity"><?php echo $value['item_quantity']; ?></input></td>
                                                     <td><input type="hidden" name="iprice">$<?php echo $value['product_price']; ?></input></td>
