@@ -137,6 +137,9 @@ if (isset($_GET["action"])) {
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">My Orders <span class="sr-only">(current)</span></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">Order Cart</a>
                     </li>
@@ -169,21 +172,21 @@ if (isset($_GET["action"])) {
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result)) {
                     ?>
-                                        <div class ="col-md-3">
-                                            <form method ="post" action="cart.php?action=add&item_id=<?php echo $row["item_id"] ?>">
-                                                <div class ="product">
-                                                    <img src ='<?php echo $row["images"]; ?>' class ="img-responsive">
-                                                    <h5 class ="text-info"><?php echo $row['name']; ?></h5>
-                                                    <h5 class ="text-danger"><?php echo $row['cost']; ?>$</h5>
-                                                    <input type ="text" name="description" class="form-control" placeholder="Any specifications?">
-                                                    <input type ="text" name="quantity" placeholder="Quantity" class="form-control">
-                                                    <input type ="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>">
-                                                    <input type ="hidden" name="hidden_price" value="<?php echo $row["cost"]; ?>">
-                                                    
-                                                    <input type="submit" name="add" style="margin-top: 5px;" class ="btn btn-success" value="Add to cart"> 
+                                                <div class ="col-md-3">
+                                                    <form method ="post" action="cart.php?action=add&item_id=<?php echo $row["item_id"] ?>">
+                                                        <div class ="product">
+                                                            <img src ='<?php echo $row["images"]; ?>' class ="img-responsive">
+                                                            <h5 class ="text-info"><?php echo $row['name']; ?></h5>
+                                                            <h5 class ="text-danger"><?php echo $row['cost']; ?>$</h5>
+                                                            <input type ="text" name="description" class="form-control" placeholder="Any specifications?">
+                                                            <input type ="text" name="quantity" placeholder="Quantity" class="form-control">
+                                                            <input type ="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>">
+                                                            <input type ="hidden" name="hidden_price" value="<?php echo $row["cost"]; ?>">
+                                                            
+                                                            <input type="submit" name="add" style="margin-top: 5px;" class ="btn btn-success" value="Add to cart"> 
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </form>
-                                        </div>
                     <?php
                 }
             }
@@ -241,9 +244,9 @@ if (isset($_GET["action"])) {
                     <?php } ?>
                 </table>
             </div>
-           
+
             <button type="submit" class="btn btn-warning center-block"><a href="searchRestaurant.php" style="color:white">Back to Selection</a></button>
-            
+
         </div>
     </body>
 </html>

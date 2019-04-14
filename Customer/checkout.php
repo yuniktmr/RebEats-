@@ -34,6 +34,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">My Orders <span class="sr-only">(current)</span></a>
+                    </li>
                     <li class="nav-item">
 
 <a class="nav-link" href="cart.php">Order Cart<!--<span class="badge badge-light"><//?php session_start(); echo $_SESSION['count'];?></span>-->
@@ -126,7 +129,7 @@
                     <div class="card" style="width: 36rem;">
                         <div class="card-body">
                             <h5 class="card-title">Payment Details</h5>
-                            <form action = "orders.php" method="POST">
+                            <form action = "ordersConfirmation.php" method="POST">
                                 <div class="form-group">
                                     <label for="inputName">Name</label>
                                     <input type="text" class="form-control" id="inputName" placeholder="Receiver's name">

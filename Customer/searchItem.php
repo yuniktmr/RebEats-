@@ -18,7 +18,6 @@ if (isset($_POST['add'])) {
             echo'<script>window.location="cart.php"</script>';
         } else {
             echo '<script>alert("Product already in the cart")</script>';
-          
         }
     } else {
         $item_array = array(
@@ -122,6 +121,9 @@ function displayItems() {
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">My Orders <span class="sr-only">(current)</span></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">Order Cart</a>
                     </li>
@@ -162,11 +164,11 @@ function displayItems() {
             </form>
 
             <br>
-<?php
-if (isset($_POST['itemSearch'])) {
-    displayItems();
-}
-?>
+            <?php
+            if (isset($_POST['itemSearch'])) {
+                displayItems();
+            }
+            ?>
 
         </div>
     </body>
