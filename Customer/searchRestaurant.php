@@ -9,7 +9,7 @@ function food() {
     $con = mysqli_connect("localhost", "root", "olemiss2019", "");
     $result = mysqli_select_db($con, "eatrebs");
 
-    if ($sql = mysqli_prepare($con, "SELECT I.item_id, I.cost, R.rest_name, R.images, R.address, R.pNumber, R.zipcode FROM restaurants R INNER JOIN items I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id")) {
+    if ($sql = mysqli_prepare($con, "SELECT I.item_id, I.cost, R.rest_id, R.rest_name, R.images, R.address, R.pNumber, R.zipcode FROM restaurants R INNER JOIN items I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id")) {
         $sql->bind_param("s", $_GET['isearch']);
         $sql->execute();
         $_SESSION['REST'] = $_GET['isearch'];
@@ -24,7 +24,7 @@ function food() {
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $row['rest_name']; ?></h5>
                             <p class="card-text">Price: <?php echo "$" . $row['cost']; ?></p>
-                            <button type="submit" class="btn btn-danger"><a href="viewMenu.php?name=<?php echo $row['rest_name']; ?>" style="color:white">View Menu</a></button>
+                            <button type="submit" class="btn btn-danger"><a href="viewMenu.php?name=<?php echo $row['rest_name']; ?>&rid=<?php echo $row['rest_id'];?>" style="color:white">View Menu</a></button>
 
                         </div>
 
@@ -43,7 +43,7 @@ function food() {
             $con = mysqli_connect("localhost", "root", "olemiss2019", "");
             $result = mysqli_select_db($con, "eatrebs");
 
-            if ($sql = mysqli_prepare($con, "SELECT  R.rest_name, R.address, R.images,R.pNumber, R.zipcode FROM restaurants R  where R.rest_name REGEXP concat('^',?)")) {
+            if ($sql = mysqli_prepare($con, "SELECT  R.rest_id, R.rest_name, R.address, R.images,R.pNumber, R.zipcode FROM restaurants R  where R.rest_name REGEXP concat('^',?)")) {
                 $sql->bind_param("s", $_GET['isearch']);
 
                 $sql->execute();
@@ -60,7 +60,7 @@ function food() {
                                     <h5 class="card-title"><?php echo $row['rest_name']; ?></h5>
                                     <p class="card-text"><?php echo "Address: " . $row['address']; ?></p>
                                     <p class="card-text"><?php echo "Zipcode: " . $row['zipcode']; ?></p>
-                                    <button type="submit" class="btn btn-danger"><a href="viewMenu.php?name=<?php echo $row['rest_name']; ?>" style="color:white">View Menu</a></button>
+                                    <button type="submit" class="btn btn-danger"><a href="viewMenu.php?name=<?php echo $row['rest_name']; ?>&rid=<?php echo $row['rest_id'];?>" style="color:white">View Menu</a></button>
                                 </div>   
                                 <?php
                             }
@@ -78,7 +78,7 @@ function food() {
                     $con = mysqli_connect("localhost", "root", "olemiss2019", "");
                     $result = mysqli_select_db($con, "eatrebs");
 
-                    if ($sql = mysqli_prepare($con, "SELECT  R.rest_name, R.address, R.images, R.pNumber, R.zipcode FROM restaurants R  where R.zipcode = ?")) {
+                    if ($sql = mysqli_prepare($con, "SELECT  R.rest_id, R.rest_name, R.address, R.images, R.pNumber, R.zipcode FROM restaurants R  where R.zipcode = ?")) {
                         $sql->bind_param("d", $_GET['isearch']);
 
                         $sql->execute();
@@ -95,7 +95,7 @@ function food() {
                                             <h5 class="card-title"><?php echo $row['rest_name']; ?></h5>
                                             <p class="card-text"><?php echo "Address: " . $row['address']; ?></p>
                                             <p class="card-text"><?php echo "Zipcode: " . $row['zipcode']; ?></p>
-                                            <button type="submit" class="btn btn-danger"><a href="viewMenu.php?name=<?php echo $row['rest_name']; ?>" style="color:white">View Menu</a></button>
+                                            <button type="submit" class="btn btn-danger"><a href="viewMenu.php?name=<?php echo $row['rest_name']; ?>&rid=<?php echo $row['rest_id'];?>" style="color:white">View Menu</a></button>
                                         </div>
                 <?php
             }

@@ -78,7 +78,7 @@ and open the template in the editor.
         $con = mysqli_connect("localhost", "root", "olemiss2019", "");
         $result = mysqli_select_db($con, "eatrebs");
 
-        if ($sql = mysqli_prepare($con, "SELECT I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where R.rest_name REGEXP concat('^',?) AND R.rest_id = I.rest_id")) {
+        if ($sql = mysqli_prepare($con, "SELECT I.item_id,R.rest_name, R.rest_id, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where R.rest_name REGEXP concat('^',?) AND R.rest_id = I.rest_id")) {
             $sql->bind_param("s", $_GET['name']);
             $sql->execute();
             $result = $sql->get_result();
@@ -100,6 +100,7 @@ and open the template in the editor.
                                         <input type ="text" name="quantity" placeholder="Quantity" class="form-control">
                                         <input type ="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>">
                                         <input type ="hidden" name="rest_name" value="<?php echo $_GET['name']; ?>">
+                                         <input type ="hidden" name="rest_id" value="<?php echo $_GET['rid']; ?>">
                                         <input type ="hidden" name="hidden_price" value="<?php echo $row["cost"]; ?>">
                                         <input type="submit" name="add" style="margin-top: 5px;" class ="btn btn-success" value="Add to cart"> 
                                         <button type="submit" style="margin-top: 5px;" class="btn btn-warning center-block"><a href="javascript:history.go(-1)" style="color:white">Back to Listings</a></button>

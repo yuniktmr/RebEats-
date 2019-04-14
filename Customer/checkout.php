@@ -92,7 +92,7 @@
                                         $total = 0;
                                         foreach ($_SESSION["cart"] as $key => $value) {
                                             ?>
-                                            <form action="checkout.php" method ="POST">
+                                    <form action="ordersConfirmation.php" method ="POST">
                                                 <tr>
                                                     <td><input type="hidden" name="iname"><?php echo $value['item_name']; ?></input></td>
                                                     <td><input type="hidden" name="iquantity"><?php echo $value['item_quantity']; ?></input></td>
@@ -106,6 +106,7 @@
                                                         }
                                                         ?></input></td>
                                                     <td><input type="hidden" name="rname"><?php echo $value['restaurant_name']; ?></input></td>
+                                                <input type="hidden" name="rname" value="<?php echo $value['restaurant_id']; ?>"></input>
                                                 </tr>
                                                 <?php
                                                 $total = $total + ($value['item_quantity'] * $value['product_price']);
@@ -115,7 +116,7 @@
                                                 <td colspan ="3" align ="right">Total </td>
                                                 <th align ="right"><input type="hidden" name="Total">$<?php echo number_format($total, 2, '.', ''); ?></input></th>
                                                 <td> <button type="submit" class="btn btn-warning center-block" style="margin-top: 0px; padding:5px;"><a href="cart.php" style="color:white">Back to Cart</a></button></td>
-                                        </form>
+                                        
                                         </td>
 
                                         </tr>
@@ -129,7 +130,7 @@
                     <div class="card" style="width: 36rem;">
                         <div class="card-body">
                             <h5 class="card-title">Payment Details</h5>
-                            <form action = "ordersConfirmation.php" method="POST">
+                            
                                 <div class="form-group">
                                     <label for="inputName">Name</label>
                                     <input type="text" class="form-control" id="inputName" placeholder="Receiver's name">
@@ -176,4 +177,3 @@
                     </div>
                 </div>
             </div>
-           

@@ -13,6 +13,7 @@ if (isset($_POST['add'])) {
                 'item_quantity' => $_POST['quantity'],
                 'restaurant_name' => $_POST['rest_name'],
                 'descript' => $_POST['description'],
+                 'restaurant_id' => $_POST['rest_id'],
             );
             $_SESSION['cart'][$count] = $item_array;
 
@@ -29,6 +30,7 @@ if (isset($_POST['add'])) {
             'item_quantity' => $_POST['quantity'],
             'restaurant_name' => $_POST['rest_name'],
             'descript' => $_POST['description'],
+             'restaurant_id' => $_POST['rest_id'],
         );
         $_SESSION['cart'][0] = $item_array;
     }
@@ -201,6 +203,7 @@ if (isset($_GET["action"])) {
                         <th width ="10%"> Quantity</th>
                         <th width ="13%"> Price details</th>
                         <th width ="17%"> Rest name</th>
+                        <th width ="17%"> Rest id</th>
                         <th width ="17%">Description</th>
                         <th width ="17%"> Total price</th>
 
@@ -217,6 +220,7 @@ if (isset($_GET["action"])) {
                                     <td><input type="hidden" name="iquantity"><?php echo $value['item_quantity']; ?></input></td>
                                     <td><input type="hidden" name="iprice">$<?php echo $value['product_price']; ?></input></td>
                                     <td><input type="hidden" name="rname"><?php echo $value['restaurant_name']; ?></input></td>
+                                    <td><input type="hidden" name="rid"><?php echo $value['restaurant_id']; ?></input></td>
                                     <td><input type="hidden" name="desc"><?php
                                         if (isset($value['descript'])) {
                                             echo $value['descript'];

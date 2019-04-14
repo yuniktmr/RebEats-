@@ -12,6 +12,7 @@ if (isset($_POST['add'])) {
                 'item_quantity' => $_POST['quantity'],
                 'restaurant_name' => $_POST['rest_name'],
                 'descript' => $_POST['description'],
+                'restaurant_id' => $_POST['rest_id'],
             );
             $_SESSION['cart'][$count] = $item_array;
 
@@ -27,6 +28,7 @@ if (isset($_POST['add'])) {
             'item_quantity' => $_POST['quantity'],
             'restaurant_name' => $_POST['rest_name'],
             'descript' => $_POST['description'],
+             'restaurant_id' => $_POST['rest_id'],
         );
         $_SESSION['cart'][0] = $item_array;
     }
@@ -59,6 +61,7 @@ function displayItems() {
                                     <input type ="text" name="quantity" placeholder="Quantity" class="form-control">
                                     <input type ="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>">
                                     <input type ="hidden" name="rest_name" value="<?php echo $row['rest_name']; ?>">
+                                    <input type ="hidden" name="rest_id" value="<?php echo $row['rest_id']; ?>">
                                     <input type ="hidden" name="hidden_price" value="<?php echo $row["cost"]; ?>">
                                     <input type="submit" name="add" style="margin-top: 5px;" class ="btn btn-success" value="Add to cart"> 
 
