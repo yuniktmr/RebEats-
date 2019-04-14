@@ -126,7 +126,7 @@
                     <div class="card" style="width: 36rem;">
                         <div class="card-body">
                             <h5 class="card-title">Payment Details</h5>
-                            <form>
+                            <form action = "orders.php" method="POST">
                                 <div class="form-group">
                                     <label for="inputName">Name</label>
                                     <input type="text" class="form-control" id="inputName" placeholder="Receiver's name">
@@ -135,25 +135,39 @@
                                     <label for="inputAddress">Address</label>
                                     <input type="text" class="form-control" id="inputAddress" placeholder="Delivery address">
                                 </div>
-                                <label for='sell'>Zip code</label>
-                                <select class="form-control" id="sel1" name="filter" method="GET">
-                                    <?php
-                                    $con = mysqli_connect('localhost', 'root', 'olemiss2019', "");
-                                    mysqli_select_db($con, 'eatrebs');
-                                    $sql = "SELECT DISTINCT zipcode FROM restaurants";
-                                    $results = mysqli_query($con, $sql);
-                                    if (mysqli_num_rows($results) > 0) {
-                                        while ($row = mysqli_fetch_array($results)) {
-                                            ?>
-                                            <option name="<?php echo $row['zipcode'] ?>"><?php echo $row['zipcode'] ?></option>
+                                <div class="form-group">
+                                    <label for='sell'>Zip code</label>
+                                    <select class="form-control" id="sel1" name="filter" method="GET">
                                         <?php
+                                        $con = mysqli_connect('localhost', 'root', 'olemiss2019', "");
+                                        mysqli_select_db($con, 'eatrebs');
+                                        $sql = "SELECT DISTINCT zipcode FROM restaurants";
+                                        $results = mysqli_query($con, $sql);
+                                        if (mysqli_num_rows($results) > 0) {
+                                            while ($row = mysqli_fetch_array($results)) {
+                                                ?>
+                                                <option name="<?php echo $row['zipcode'] ?>"><?php echo $row['zipcode'] ?></option>
+                                                <?php
+                                            }
+                                        } else {
+                                            echo "No";
                                         }
-                                    } else {
-                                        echo "No";
-                                    }
-                                    ?>
+                                        ?>
 
-                                </select>
+                                    </select>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="CardNo">Card Number</label>
+                                        <input type="text" class="form-control" id="CardNo" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="CVV">CVV</label>
+                                        <input type="number" class="form-control" id="CVV" placeholder="">
+                                    </div>
+
+                                </div>
+                                <input type="submit" name="Pay" style="margin-top: 5px;" class ="btn btn-success" value="Confirm Payment"> 
                             </form>
                         </div>
                     </div>
