@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -76,7 +80,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Order Summary</h5>
 
-                            <?php session_start();
+                            <?php
                             ?>
                             <div class="table-responsive">
                                 <table class ="table table-bordered">

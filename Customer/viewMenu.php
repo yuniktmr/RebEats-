@@ -1,4 +1,6 @@
-
+<?php
+    session_start();
+?>
 
 
 <!DOCTYPE html>
@@ -73,7 +75,7 @@ and open the template in the editor.
 
 
         <?php
-        session_start();
+        
 
         $con = mysqli_connect("localhost", "root", "olemiss2019", "");
         $result = mysqli_select_db($con, "eatrebs");
