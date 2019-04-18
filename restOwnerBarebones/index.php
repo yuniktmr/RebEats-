@@ -58,7 +58,7 @@
         <?php
         echo "
         <a href='itemForm.php?email=".$email."' class='list-group-item list-group-item-action' style='color: #457B9D'>Add Items</a>
-        <a href='#' class='list-group-item list-group-item-action bg-light' style='color: #457B9D'>Show Current Orders</a>
+        <a href='orderView.php?email=".$email."' class='list-group-item list-group-item-action bg-light' style='color: #457B9D'>Show Current Orders</a>
         <a href='restSettingsForm.php?email=".$email."' class='list-group-item list-group-item-action bg-light' style='color: #457B9D'>Account Settings</a>
         <a class='list-group-item list-group-item-action bg-light' style='color: #457B9D' onclick='logout()'>Log Out</a>";
         ?>
@@ -96,7 +96,7 @@
             <div class='card' style='width: 18rem; color: #457B9D'>
             <div class='card-body'>
             <h5 class='card-title'>".$itemsArray[$index]['name']."</h5>
-            <h6 class='card-subtitle mb-2'>Price: $".$itemsArray[$index]['cost']."</h6>
+            <h6 class='card-subtitle mb-2'>$".$itemsArray[$index]['cost']."</h6>
             <p class='card-text'>".$itemsArray[$index]['description']."</p>
             <a href='editItem.php?email=".$email."&item=".$itemsArray[$index]['item_id']."' class='card-link' style:'color: #457B9D'>Edit Item</a>
             <a href='deleteItems.php?email=".$email."&item=".$itemsArray[$index]['item_id']."' class='card-link' style:'color: #457B9D'>Remove Item</a>
@@ -125,7 +125,7 @@
             <div class='card' style='width: 18rem; color: #457B9D'>
             <div class='card-body'>
             <h5 class='card-title'>".$itemsArray[$i]['name']."</h5>
-            <h6 class='card-subtitle mb-2'>Price: $".$itemsArray[$i]['cost']."</h6>
+            <h6 class='card-subtitle mb-2'>$".$itemsArray[$i]['cost']."</h6>
             <p class='card-text'>".$itemsArray[$i]['description']."</p>
             <a href='editItem.php?email=".$email."&item=".$itemsArray[$index]['item_id']."' class='card-link' style:'color: #457B9D'>Edit Item</a>
             <a href='deleteItems.php?email=".$email."&item=".$itemsArray[$i]['item_id']."' class='card-link' style:'color: #457B9D'>Remove Item</a>

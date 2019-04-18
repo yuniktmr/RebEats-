@@ -14,3 +14,7 @@ function logout(){
       });
 
 }
+
+function submit(){
+    document.getElementById("form").submit();
+}

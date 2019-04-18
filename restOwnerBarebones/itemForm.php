@@ -18,7 +18,7 @@
   ?>
     
     <?php echo "
-    <form method=POST action=addItems.php>
+    <form method=POST action=addItems.php id=form>
         <div class='form-group'>
         <label>Item Name</label>
         <input name='email' style='display: none' value='".$email."'>

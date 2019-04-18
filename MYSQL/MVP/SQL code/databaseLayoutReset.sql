@@ -58,7 +58,7 @@ CREATE TABLE restaurants (
 CREATE TABLE orders (
   ord_id INT(11) NOT NULL AUTO_INCREMENT,
   cus_id INT(11) NOT NULL,
-  dr_id INT(11) NOT NULL,
+  dr_id INT(11) NULL DEFAULT NULL,
   rest_id INT(11) NOT NULL,
   cost decimal(13,2) NOT NULL,
   address VARCHAR(255) NOT NULL,
