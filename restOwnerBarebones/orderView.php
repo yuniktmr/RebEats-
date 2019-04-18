@@ -1,3 +1,21 @@
+<?php
+
+  require_once "../Login-Linked/includes/dbh.php";
+
+  if(isset($_GET['order'])){
+
+    $query = "UPDATE orders SET rest_confirm=TRUE WHERE ord_id=".$_GET['order'].";";
+
+    error_log($query);
+
+    mysqli_query($conn, $query);
+
+    header("Location: orderView.php?email=".$_GET['email']);
+
+  }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,26 +33,17 @@
   
   <?php
 
-    require_once "../Login-Linked/includes/dbh.php";
-
     $email = $_GET['email'];
 
     echo "
 
-    <H2 style='color: #FAFBFC; text-align: center; padding-top: 30px;'> Pending Orders </h2>
-
-    <form method=POST action=orderView.php>";
-    
+    <H2 style='color: #FAFBFC; text-align: center; padding-top: 30px;'> Pending Orders </h2>";
 
     $query = "SELECT * FROM orders WHERE rest_id=(SELECT rest_id FROM restaurants WHERE email='".$email."') AND rest_confirm = FALSE;";
-
-    error_log($query);
 
     $orders = mysqli_query($conn, $query);
 
     while($row = $orders->fetch_assoc()){
-
-        echo "<input type=hidden value='".$row['ord_id']."' />";
         
         $customerQuery = "SELECT * FROM customers WHERE cus_id='".$row['cus_id']."';";
         $itemQuery = "SELECT * FROM order_items WHERE ord_id='".$row['ord_id']."';";
@@ -57,15 +66,47 @@
 
             echo "
             </p>
-            <a href=# class='card-link' onclick='submit()'>Accept Order</a>
+            <a href='orderView.php?email=".$email."&order=".$row['ord_id']."' class='card-link' onclick='submit()'>Accept Order</a>
         </div>
         </div>";
         
     }
-        
-    
 
-    echo "</form>";
+    echo "
+
+    <H2 style='color: #FAFBFC; text-align: center; padding-top: 30px;'> Accepted Orders </h2>";
+
+    $query = "SELECT * FROM orders WHERE rest_id=(SELECT rest_id FROM restaurants WHERE email='".$email."') AND rest_confirm = TRUE AND fulfilled = FALSE;";
+
+    $orders = mysqli_query($conn, $query);
+
+    while($row = $orders->fetch_assoc()){
+        
+        $customerQuery = "SELECT * FROM customers WHERE cus_id='".$row['cus_id']."';";
+        $itemQuery = "SELECT * FROM order_items WHERE ord_id='".$row['ord_id']."';";
+
+        $customer = mysqli_query($conn, $customerQuery)->fetch_assoc();
+        $items = mysqli_query($conn, $itemQuery);
+
+        echo "<div class='card' style='width: 1875px; margin-left: 20px; margin-bottom: 20px; text-align: center'>
+        <div class='card-body'>
+            <h4 class='card-title'>Submitted by ".$customer['name']." </h5>
+            <h5 class='card-subtitle mb-2 text-muted'>".$customer['address']."</h6>
+            <p class='card-text'>
+            ";
+            while($itemRow = $items->fetch_assoc()){
+
+                $itemName = mysqli_query($conn, "SELECT name FROM items WHERE item_id='".$itemRow['item_id']."';")->fetch_assoc()['name'];
+
+                echo "<h4>".$itemName.": ".$itemRow['instructions']."</h4>";
+            }
+
+            echo "
+            </p>
+        </div>
+        </div>";
+        
+    }
         
     ?>
 
