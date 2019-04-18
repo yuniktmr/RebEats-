@@ -99,7 +99,7 @@ function register(){
 
 function loader(){
     
-     window.location.href = "../index.html";
+     window.location.href = "../index.php";
 }
 
 //function that shows and hides the relevant fields of the selected account type

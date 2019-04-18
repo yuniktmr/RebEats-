@@ -37,6 +37,7 @@ CREATE TABLE items (
   name VARCHAR(255) NOT NULL,
   images VARCHAR(255) NULL,
   description TEXT NULL DEFAULT NULL,
+  ratings int(11) NULL DEFAULT NULL,
   PRIMARY KEY (item_id)
 )ENGINE = InnoDB;
 
@@ -50,6 +51,7 @@ CREATE TABLE restaurants (
   zipcode int(11) NOT NULL,
   open VARCHAR(255) NOT NULL,
   close VARCHAR(255) NOT NULL,
+  images VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (rest_id)
 )ENGINE = InnoDB;
 
