@@ -43,13 +43,13 @@ function displayItems() {
     $query;
 
     if($_POST['sort'] === "name"){
-        $query = "SELECT I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `name` ASC";
+        $query = "SELECT R.rest_id,I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `name` ASC";
     }elseif($_POST['sort'] === "cost"){
-        $query = "SELECT I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `cost` ASC";
+        $query = "SELECT R.rest_id,I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `cost` ASC";
     }elseif($_POST['sort'] === "ratings"){
-        $query = "SELECT I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `ratings` ASC";
+        $query = "SELECT R.rest_id,I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `ratings` ASC";
     }else{
-        $query = "SELECT I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id";
+        $query = "SELECT R.rest_id, I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id";
     }
 
     if ($sql = mysqli_prepare($con, $query)) {
