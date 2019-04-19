@@ -104,7 +104,9 @@
             echo "
             </p>
         </div>
-        </div>";
+        </div>
+        
+        <button class='btn' style='background-color: #FAFBFC; color: black; display: inline; margin-top: 20px'><a href='index.php?email=".$email."' style='background-color: #FAFBFC; color: black; display: inline'>Back To Menu</a></button>";
         
     }
         
