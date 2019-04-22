@@ -29,14 +29,15 @@
     <div class="auth">
         <h1> Welcome To the Login Page</h1>
         <div class="buttons">
-            <input type="email" placeholder="Email" id="emailInput">
+            <input type="email" placeholder="Email" id="emailInput" name="email">
             <input type="password" placeholder="Password" id=passwordInput>
-            <button onclick="login()">Login </button>
-           
+            <button type = "submit" onclick="login()">Login </button>
+         
             <button id="button2" > Not a member? <a href= "#" onclick="registerScreen()">Sign Up Now!</a></button>
             <p id="status"></p>
         </div>
     </div>
+    
 </body>
 
 </html>

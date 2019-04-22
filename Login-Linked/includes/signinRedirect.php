@@ -13,7 +13,7 @@
     //makes query for $sqlRest
     $resultRest = mysqli_query($conn, $sqlRest);
     $resultCustomer = mysqli_query($conn, $sqlCustomer);
-
+    $resultDriver = mysqli_query($conn, $sqlDriver);
     
     if ($resultRest->num_rows === 1) {  //if the email is found in restaurants
         //header("Location: ../../Menu-master/index.php?email=".$email);
@@ -25,8 +25,8 @@
         echo "<script>window.location.href=\"../../Customer/index.php?email=".$email."\"</script>";
         //header("Location: ../../User_Page/user.html?email=".$email);
         exit();
-    }else{
-        header("Location: ../index.php");
+    }elseif($resultDriver->num_rows === 1){
+        echo "<script>window.location.href=\"../../Driver/index.php?email=".$email."\"</script>";
         exit();
     }
 
