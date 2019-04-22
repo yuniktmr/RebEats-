@@ -99,9 +99,12 @@
                             </td>
                             <td><?php echo $row['cost'];?></td>
                             <td><?php if ($row['dr_confirm']==0){
-                                        echo "Not received";
+                                        echo "Pending";
+                                    }elseif ($row['dr_confirm']==2){
+                                        echo "Driver Rejected";
                                     }else{
-                                        echo "Received";}
+                                        echo "Accepted";
+                                    }
                                 ?>
                             </td>
                             <?php if ($row['dr_confirm']==0){?><td>
