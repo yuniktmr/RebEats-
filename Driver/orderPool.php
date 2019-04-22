@@ -41,24 +41,8 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="viewOrders.php">My Orders <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cart.php">Order Cart</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Search for
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                   
 
-
-                            <a class="dropdown-item" href="searchItem.php">Food</a>
-
-
-                        </div>
-                    </li>
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action="searchRestaurant.php" method="POST">
@@ -73,11 +57,9 @@
                 <h1 class="display-4">RebEats!</h1>
             </div>
             <div class ="jbody">
-                <p class="lead">Founded in 2019 by a group of five industrious individuals, RebEats allows you to choose from a wide variety of items from multiple restaurants under our wing.</p>
-                <p>Not only that, we ensure the food you order gets delivered
-                    to your doorsteps at a very reasonable price almost instantly.</p>
+               
                 <hr class="my-4">
-                <p>Here are your orders</p>
+                <p>Here are the current orders</p>
             </div>
             <!-------------TABLE OF ORDERS------------->
             <div class ="jorders">
@@ -90,8 +72,8 @@
                             <th scope="col">Delivery Items</th>
                             <th scope="col">Total Cost</th>
                             <th scope="col">Driver Pickup</th>
-                            <th scope="col">Restaurant pickup</th>
-                            <th scope="col">Status</th>
+                            
+                
                         </tr>
                     </thead>
                     <!--ORDERS RETRIEVED FROM DATABASE-->
@@ -117,16 +99,19 @@
                             </td>
                             <td><?php echo $row['cost'];?></td>
                             <td><?php if ($row['rest_confirm']==0){
-                            echo "Not received";}else{echo "Received";}
-                            ?></td>
-                            <td><?php if ($row['dr_confirm']==0){
-                            echo "Not received";}else{echo "Received";}
-                            ?></td>
-                            <td><?php if ($row['dr_confirm']==0 || $row['rest_confirm']==0){
-                            echo "Not Fulfilled";}else{echo "Fulfilled";}
-                            ?></td>
+                                        echo "Not received";
+                                    }else{
+                                        echo "Received";}
+                                ?>
+                            </td>
+                            <?php if ($row['rest_confirm']==0){?><td>
+                                <button type="submit" class="btn btn-success">Accept</button>
+                                <button type="submit" class="btn btn-danger">Reject</button>
+                            </td><?php }
+                            }?>
+
                         </tr>
-                            <?php }?>
+                            
                     </tbody>
                 </table>
             </div>
