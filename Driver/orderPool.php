@@ -105,9 +105,9 @@
                                 ?>
                             </td>
                             <?php if ($row['rest_confirm']==0){?><td>
-                                <form action = "updateStatus.php" method="POST">
-                                    <button type="submit" class="btn btn-success">Accept</button>
-                                    <button type="submit" class="btn btn-danger">Reject</button>
+                                <form action = "updateStatus.php?id=<?php echo $row['ord_id'];?>" method="POST">
+                                    <button type="submit" class="btn btn-success" name="accept">Accept</button>
+                                    <button type="submit" class="btn btn-danger" name="reject">Reject</button>
                                 </form>
                             </td><?php }
                             }?>
