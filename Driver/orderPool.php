@@ -98,20 +98,25 @@
                             ?>
                             </td>
                             <td><?php echo $row['cost'];?></td>
-                            <td><?php if ($row['rest_confirm']==0){
+                            <td><?php if ($row['dr_confirm']==0){
                                         echo "Not received";
                                     }else{
                                         echo "Received";}
                                 ?>
                             </td>
-                            <?php if ($row['rest_confirm']==0){?><td>
+                            <?php if ($row['dr_confirm']==0){?><td>
                                 <form action = "updateStatus.php?id=<?php echo $row['ord_id'];?>" method="POST">
                                     <button type="submit" class="btn btn-success" name="accept">Accept</button>
                                     <button type="submit" class="btn btn-danger" name="reject">Reject</button>
                                 </form>
-                            </td><?php }
-                            }?>
-
+                            </td><?php }else {
+                            ?><td>
+                            
+                                <button type="submit" class="btn btn-secondary btn" name="accept" disabled>Accept</button>
+                                <button type="submit" class="btn btn-secondary btn" name="reject" disabled>Reject</button>
+                            
+                            </td>
+                            <?php } }?>
                         </tr>
                             
                     </tbody>
