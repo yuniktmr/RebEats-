@@ -105,8 +105,10 @@
                                 ?>
                             </td>
                             <?php if ($row['rest_confirm']==0){?><td>
-                                <button type="submit" class="btn btn-success">Accept</button>
-                                <button type="submit" class="btn btn-danger">Reject</button>
+                                <form action = "updateStatus.php" method="POST">
+                                    <button type="submit" class="btn btn-success">Accept</button>
+                                    <button type="submit" class="btn btn-danger">Reject</button>
+                                </form>
                             </td><?php }
                             }?>
 
