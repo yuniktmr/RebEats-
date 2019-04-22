@@ -1,8 +1,7 @@
+
+
 <?php
-    session_start();
-?>
-
-
+        session_start();?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -46,7 +45,7 @@ and open the template in the editor.
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">My Orders <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="viewOrders.php">My Orders <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">Order Cart</a>
@@ -74,9 +73,8 @@ and open the template in the editor.
         <br>
 
 
-        <?php
         
-
+        <?php
         $con = mysqli_connect("localhost", "root", "olemiss2019", "");
         $result = mysqli_select_db($con, "eatrebs");
 

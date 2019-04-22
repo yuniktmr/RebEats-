@@ -28,7 +28,7 @@ if (isset($_POST['add'])) {
             'item_quantity' => $_POST['quantity'],
             'restaurant_name' => $_POST['rest_name'],
             'descript' => $_POST['description'],
-             'restaurant_id' => $_POST['rest_id'],
+            'restaurant_id' => $_POST['rest_id'],
         );
         $_SESSION['cart'][0] = $item_array;
     }
@@ -39,18 +39,18 @@ if (isset($_POST['add'])) {
 function displayItems() {
     $con = mysqli_connect("localhost", "root", "olemiss2019", "");
     $result = mysqli_select_db($con, "eatrebs");
-
     $query;
 
-    if($_POST['sort'] === "name"){
-        $query = "SELECT R.rest_id,I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `name` ASC";
-    }elseif($_POST['sort'] === "cost"){
-        $query = "SELECT R.rest_id,I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `cost` ASC";
-    }elseif($_POST['sort'] === "ratings"){
-        $query = "SELECT R.rest_id,I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `ratings` ASC";
-    }else{
+    if ($_POST['sort'] === "name") {
+        $query = "SELECT R.rest_id, I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `name` ASC";
+    } elseif ($_POST['sort'] === "cost") {
+        $query = "SELECT R.rest_id, I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `cost` ASC";
+    } elseif ($_POST['sort'] === "ratings") {
+        $query = "SELECT R.rest_id, I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id ORDER BY `ratings` ASC";
+    } else {
         $query = "SELECT R.rest_id, I.item_id,R.rest_name, I.name, I.images,description, I.cost FROM restaurants AS R INNER JOIN items AS I where I.name REGEXP concat('^',?) AND R.rest_id = I.rest_id";
     }
+
 
     if ($sql = mysqli_prepare($con, $query)) {
         $sql->bind_param("s", $_POST['isearch']);
@@ -138,7 +138,7 @@ function displayItems() {
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">My Orders <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="viewOrders.php">My Orders <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">Order Cart</a>
@@ -173,12 +173,13 @@ function displayItems() {
             <form class="form-inline my-2 my-lg-0" action="searchItem.php" method="POST">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" name="isearch" aria-label="Search">
                 <select class="form-control mr-sm-2" name=sort>
-                <option value="">Sort By</option>
-                <option value="name">Name</option>
-                <option value="cost">Price</option>
-                <option value="ratings">Ratings</option>
+                    <option value="">Sort By</option>
+                    <option value="name">Name</option>
+                    <option value="cost">Price</option>
+                    <option value="ratings">Ratings</option>
                 </select>
-                
+
+
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="itemSearch">Search</button>
                 <!-- Example split danger button -->
 

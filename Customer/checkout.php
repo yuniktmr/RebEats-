@@ -1,7 +1,5 @@
-<?php
-    session_start();
+<?php session_start();
 ?>
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -39,7 +37,7 @@
                         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">My Orders <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="viewOrders.php">My Orders <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
 
@@ -80,8 +78,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Order Summary</h5>
 
-                            <?php
-                            ?>
+
                             <div class="table-responsive">
                                 <table class ="table table-bordered">
                                     <tr>
@@ -96,36 +93,41 @@
                                         $total = 0;
                                         foreach ($_SESSION["cart"] as $key => $value) {
                                             ?>
-                                    <form action="ordersConfirmation.php" method ="POST">
+                                            <form action="ordersConfirmation.php" method ="POST">
+
                                                 <tr>
-                                                    <input type="hidden" name="iid" value="<?php echo $value['product_id']; ?>"></input></td>
-                                                    <td><input type="hidden" name="iname"><?php echo $value['item_name']; ?></input></td>
-                                                    <td><input type="hidden" name="iquantity"><?php echo $value['item_quantity']; ?></input></td>
-                                                    <td><input type="hidden" name="iprice">$<?php echo $value['product_price']; ?></input></td>
-                                                    <td><input type="hidden" name="icost">$<?php echo number_format(($value['item_quantity'] * $value['product_price']), 2, '.', ''); ?></input></td>
-                                                    <td><input type="hidden" name="desc"><?php
-                                                        if (isset($value['descript'])) {
-                                                            echo $value['descript'];
-                                                        } else {
-                                                            echo "None";
-                                                        }
-                                                        ?></input></td>
-                                                    <td><input type="hidden" name="rname"><?php echo $value['restaurant_name']; ?></input></td>
-                                                <input type="hidden" name="rname" value="<?php echo $value['restaurant_id']; ?>"></input>
+                                                <input type="hidden" name="iid" value="<?php echo $value['product_id']; ?>"></input></td>
+                                                <td><input type="hidden" name="iname"><?php echo $value['item_name']; ?></input></td>
+                                                <td><input type="hidden" name="iquantity"><?php echo $value['item_quantity']; ?></input></td>
+                                                <td><input type="hidden" name="iprice"><?php echo $value['product_price']; ?></input></td>
+                                                <td><input type="hidden" name="icost">$<?php echo number_format(($value['item_quantity'] * $value['product_price']), 2, '.', ''); ?></input></td>
+                                                <td><input type="hidden" name="desc"><?php
+                                                    if (isset($value['descript'])) {
+                                                        echo $value['descript'];
+                                                    } else {
+                                                        echo "None";
+                                                    }
+                                                    ?></input></td>
+                                                <td><input type="hidden" name="rname"><?php echo $value['restaurant_name']; ?></input></td>
+                                                <input type="hidden" name="rid" value="<?php echo $value['restaurant_id']; ?>"></input>
                                                 </tr>
+
                                                 <?php
                                                 $total = $total + ($value['item_quantity'] * $value['product_price']);
                                             }
+                                            $_SESSION['Total'] = $total;
                                             ?>
                                             <tr>
                                                 <td colspan ="3" align ="right">Total </td>
                                                 <th align ="right"><input type="hidden" name="Total">$<?php echo number_format($total, 2, '.', ''); ?></input></th>
-                                                <td> <button type="submit" class="btn btn-warning center-block" style="margin-top: 0px; padding:5px;"><a href="cart.php" style="color:white">Back to Cart</a></button></td>
-                                        
-                                        </td>
 
-                                        </tr>
-                                    <?php } ?>
+                                                <td> <button type="submit" class="btn btn-warning center-block" style="margin-top: 0px; padding:5px;"><a href="cart.php" style="color:white">Back to Cart</a></button></td>
+
+                                                </td>
+
+                                            </tr>
+
+                                        <?php } ?>
                                 </table>
                             </div>
                         </div>
@@ -135,48 +137,48 @@
                     <div class="card" style="width: 36rem;">
                         <div class="card-body">
                             <h5 class="card-title">Payment Details</h5>
-                            
-                                <div class="form-group">
-                                    <label for="inputName">Name</label>
-                                    <input type="text" class="form-control" id="inputName" placeholder="Receiver's name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="Delivery address">
-                                </div>
-                                <div class="form-group">
-                                    <label for='sell'>Zip code</label>
-                                    <select class="form-control" id="sel1" name="filter" method="GET">
-                                        <?php
-                                        $con = mysqli_connect('localhost', 'root', 'olemiss2019', "");
-                                        mysqli_select_db($con, 'eatrebs');
-                                        $sql = "SELECT DISTINCT zipcode FROM restaurants";
-                                        $results = mysqli_query($con, $sql);
-                                        if (mysqli_num_rows($results) > 0) {
-                                            while ($row = mysqli_fetch_array($results)) {
-                                                ?>
-                                                <option name="<?php echo $row['zipcode'] ?>"><?php echo $row['zipcode'] ?></option>
-                                                <?php
-                                            }
-                                        } else {
-                                            echo "No";
+
+                            <div class="form-group">
+                                <label for="inputName">Name</label>
+                                <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Receiver's name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Address</label>
+                                <input type="text" class="form-control" id="inputAddress" name="Address" placeholder="Delivery address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for='sell'>Zip code</label>
+                                <select class="form-control" id="sel1" name="filter" method="GET">
+                                    <?php
+                                    $con = mysqli_connect('localhost', 'root', 'olemiss2019', "");
+                                    mysqli_select_db($con, 'eatrebs');
+                                    $sql = "SELECT DISTINCT zipcode FROM restaurants";
+                                    $results = mysqli_query($con, $sql);
+                                    if (mysqli_num_rows($results) > 0) {
+                                        while ($row = mysqli_fetch_array($results)) {
+                                            ?>
+                                            <option name="<?php echo $row['zipcode'] ?>"><?php echo $row['zipcode'] ?></option>
+                                            <?php
                                         }
-                                        ?>
+                                    } else {
+                                        echo "No";
+                                    }
+                                    ?>
 
-                                    </select>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="CardNo">Card Number</label>
+                                    <input type="text" class="form-control" id="CardNo" placeholder="" required>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="CardNo">Card Number</label>
-                                        <input type="text" class="form-control" id="CardNo" placeholder="">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="CVV">CVV</label>
-                                        <input type="number" class="form-control" id="CVV" placeholder="">
-                                    </div>
+                                <div class="form-group col-md-6">
+                                    <label for="CVV">CVV</label>
+                                    <input type="number" class="form-control" id="CVV" placeholder="" required>
+                                </div>
 
-                                </div>
-                                <input type="submit" name="Pay" style="margin-top: 5px;" class ="btn btn-success" value="Confirm Payment"> 
+                            </div>
+                            <input type="submit" name="Pay" style="margin-top: 5px;" class ="btn btn-success" value="Confirm Payment"> 
                             </form>
                         </div>
                     </div>
