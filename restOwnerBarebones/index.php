@@ -32,43 +32,80 @@
   <!-- Custom styles for this template -->
   <link href="css/simple-sidebar.css" rel="stylesheet">
 
-</head>
+  <head>
+        <meta charset="UTF-8">
+        <title>Custom</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    </head>
+    <style>
+        .navbar-nav > li{
+            padding-left:30px;
+            padding-right:30px;
+        }
+        .card-img-top {
+            padding-left: 3vh;
+            width: 35vh;
+            height: 25vh;
+            object-fit: cover;
+        }
+        .jbody{
+            display: block;
+        }
+        .jorders{
+            display: none;
+        }
+
+
+    </style>
 
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<?php
+
+require_once "../Login-Linked/includes/dbh.php"; //loads $conn for connecting to the database
+
+$email = $_GET['email'];
+
+$resultHeading = mysqli_query($conn, "SELECT rest_name FROM restaurants WHERE email = '$email';");
+echo "<div class='navbar-brand' style='color: white;'>".$resultHeading->fetch_assoc()['rest_name']."</div>";
+
+?>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                <?php
+                  echo "
+                  <li class='nav-item active'><a href='index.php?email=".$email."' class='nav-link'>Menu</a></li>
+                  <li class='nav-item active'><a href='itemForm.php?email=".$email."' class='nav-link'>Add Items</a></li>
+                  <li class='nav-item active'><a href='orderView.php?email=".$email."' class='nav-link'>Show Current Orders</a></li>
+                  <li class='nav-item active'><a href='restSettingsForm.php?email=".$email."' class='nav-link'>Account Settings</a></li>
+                  <li class='nav-item active'><a class='nav-link' onclick='logout()' href='#'>Log Out</a></li>";
+                  ?>
+
+                </ul>
+            </div>
+        </nav>
 
   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper" style='color: #457B9D'>
 
-    <?php
-
-      require_once "../Login-Linked/includes/dbh.php"; //loads $conn for connecting to the database
-
-      $email = $_GET['email'];
-
-      $resultHeading = mysqli_query($conn, "SELECT rest_name FROM restaurants WHERE email = '$email';");
-      echo "<div class='sidebar-heading'>".$resultHeading->fetch_assoc()['rest_name']."</div>";
-
-    ?>
-
-      <!-- <div class="sidebar-heading">Start Bootstrap </div> -->
-      <div class="list-group list-group-flush">
-
-        <?php
-        echo "
-        <a href='itemForm.php?email=".$email."' class='list-group-item list-group-item-action' style='color: #457B9D'>Add Items</a>
-        <a href='orderView.php?email=".$email."' class='list-group-item list-group-item-action bg-light' style='color: #457B9D'>Show Current Orders</a>
-        <a href='restSettingsForm.php?email=".$email."' class='list-group-item list-group-item-action bg-light' style='color: #457B9D'>Account Settings</a>
-        <a class='list-group-item list-group-item-action bg-light' style='color: #457B9D' onclick='logout()'>Log Out</a>";
-        ?>
-
-      </div>
     </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id="page-content-wrapper" style='background-color: #1D3557; padding-left: 150px'>
+    <div id="page-content-wrapper" style=' padding-left: 150px'>
 
     <?php 
 
@@ -93,7 +130,7 @@
 
             echo "<div class='col-md-4' style='padding-top: 20px; padding-bottom: 20px'>
         
-            <div class='card' style='width: 18rem; color: #457B9D'>
+            <div class='card' style='width: 18rem; background-color: 	#343A40; color: white'>
             <div class='card-body'>
             <h5 class='card-title'>".$itemsArray[$index]['name']."</h5>
             <h6 class='card-subtitle mb-2'>$".$itemsArray[$index]['cost']."</h6>
@@ -122,7 +159,7 @@
 
             echo "<div class='col-md-4'>
         
-            <div class='card' style='width: 18rem; color: #457B9D'>
+            <div class='card' style='width: 18rem; color: white; background-color: 	#343A40'>
             <div class='card-body'>
             <h5 class='card-title'>".$itemsArray[$i]['name']."</h5>
             <h6 class='card-subtitle mb-2'>$".$itemsArray[$i]['cost']."</h6>
