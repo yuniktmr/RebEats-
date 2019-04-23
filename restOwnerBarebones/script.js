@@ -7,7 +7,7 @@ function logout(){
 
     firebase.auth().signOut().then(function() {
         
-        window.location.href="../login-linked/index.php"
+        window.location.href="../../index.php"
 
       }, function(error) {
         // An error happened.
