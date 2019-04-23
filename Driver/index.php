@@ -39,7 +39,9 @@ and open the template in the editor.
                         <a class="nav-link" href="orderPool.php">Order Pool <span class="sr-only">(current)</span></a>
                     </li>
                     
-                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.php">Log Out</a>
+                    </li>
 
                 </ul>
                 
