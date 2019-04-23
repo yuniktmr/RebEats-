@@ -85,10 +85,11 @@
                 <h6 style="font-family: 'Quicksand', sans-serif;">Address: <?php echo $_POST['Address']; ?></h4>
 
                     <?php
+                    echo $_SESSION['email'];
                     $con = mysqli_connect("localhost", "root", "olemiss2019", "");
                     mysqli_select_db($con, "eatrebs");
-                    if ($sql = mysqli_prepare($con, "INSERT INTO orders (cus_id, dr_id, rest_id, cost, address, rest_confirm, dr_confirm, fulfilled) VALUES (1, 1, ?, ? ,?,0,0,0)")) {
-                        $sql->bind_param("ids", $_POST['rid'], $_SESSION['Total'], $_POST['Address']);
+                    if ($sql = mysqli_prepare($con, "INSERT INTO orders (cus_id, dr_id, rest_id, cost, address, rest_confirm, dr_confirm, fulfilled) VALUES ((SELECT cus_id FROM customers WHERE email=?), 1, ?, ? ,?,0,0,0)")) {
+                        $sql->bind_param("sids", $_SESSION['email'], $_POST['rid'], $_SESSION['Total'], $_POST['Address']);
                         
                         $sql->execute();
 //

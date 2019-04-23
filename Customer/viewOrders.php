@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -103,7 +106,8 @@
                         <?php 
                             $con = mysqli_connect("localhost","root","olemiss2019","");
                             mysqli_select_db($con, "eatrebs");
-                            $result= mysqli_query($con, "SELECT orders.ord_id, orders.address, orders.cost, orders.rest_confirm, orders.dr_confirm, orders.fulfilled from orders");
+                            $query = "SELECT orders.ord_id, orders.address, orders.cost, orders.rest_confirm, orders.dr_confirm, orders.fulfilled from orders WHERE cus_id=(SELECT cus_id FROM customers WHERE email='".$_SESSION['email']."')";
+                            $result= mysqli_query($con, $query);
                             while ($row = mysqli_fetch_array($result)){
                         
                         

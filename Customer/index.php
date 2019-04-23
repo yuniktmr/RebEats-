@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION['email'] = $_GET['email'];
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
