@@ -169,8 +169,8 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="CardNo">Card Number</label>
-                                    <input type="text" class="form-control" id="CardNo" placeholder="" required>
+                                    <label for="CardNo">Card Number (16-Digit)</label>
+                                    <input type="text" class="form-control" id="CardNo" placeholder="" required pattern="[0-9]{16}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="CVV">CVV</label>
