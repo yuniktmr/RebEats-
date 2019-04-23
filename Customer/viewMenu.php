@@ -95,7 +95,7 @@ and open the template in the editor.
                                     <form method ="post" action='cart.php?action=add&item_id=<?php echo $row["item_id"] ?>'>
 
                                         <input type ="text" name="description" class="form-control" placeholder="Any specifications?" required>
-                                        <input type ="text" name="quantity" placeholder="Quantity" class="form-control">
+                                        <input type ="number" name="quantity" placeholder="Quantity" class="form-control" min="1" max="5">
                                         <input type ="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>">
                                         <input type ="hidden" name="rest_name" value="<?php echo $_GET['name']; ?>">
                                          <input type ="hidden" name="rest_id" value="<?php echo $_GET['rid']; ?>">
