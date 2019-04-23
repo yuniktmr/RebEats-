@@ -19,6 +19,23 @@
 <!doctype html>
 <html lang="en">
   <head>
+
+<!--START FIREBASE-->
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAB6FTyFRYTnZCjSjrmVbdBb81SaxcxiLs",
+    authDomain: "mvp-authentication.firebaseapp.com",
+    databaseURL: "https://mvp-authentication.firebaseio.com",
+    projectId: "mvp-authentication",
+    storageBucket: "mvp-authentication.appspot.com",
+    messagingSenderId: "347871480306"
+  };
+  firebase.initializeApp(config);
+</script>
+<!-- END FIREBASE -->
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
