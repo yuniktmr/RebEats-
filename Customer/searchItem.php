@@ -156,15 +156,12 @@ function displayItems() {
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Log Out</a>
-                    </li>
+                    
 
                 </ul>
-                <form class="form-inline my-2 my-lg-0" action="searchItem.php" method="POST">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <li class="nav-item">
+                        <a class="nav-link" href="../index.php">Log Out</a>
+                    </li>
             </div>
         </nav>
         <div class="jumbotron">
