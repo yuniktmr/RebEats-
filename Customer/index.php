@@ -1,6 +1,8 @@
 <?php
 session_start();
+if (isset($_GET['email'])){
 $_SESSION['email'] = $_GET['email'];
+}
 ?>
 <!DOCTYPE html>
 <!--
@@ -25,6 +27,9 @@ and open the template in the editor.
         .navbar-nav > li{
             padding-left:30px;
             padding-right:30px;
+        }
+        .carousel-inner > .item {
+             height: 400px;
         }
     </style>
     <body>
@@ -66,6 +71,27 @@ and open the template in the editor.
                     </li>
             </div>
         </nav>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="carousel/frap.jpg" alt="First slide" style="height:50%; width: 50%">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="carousel/pasta.jpg" alt="Second slide" style="height:50%; width: 50%">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="carousel/sushi.jpg" alt="Third slide" style="height:50%; width: 50%">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
     </body>
 </html>
