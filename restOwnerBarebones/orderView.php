@@ -164,7 +164,6 @@ echo "<div class='navbar-brand' style='color: white;'>".$resultHeading->fetch_as
         echo "<div class='card' style='width: 1875px; margin-left: 20px; margin-bottom: 20px; text-align: center; background-color: #343A40; color: white'>
         <div class='card-body'>
             <h4 class='card-title'>Submitted by ".$customer['name']." </h5>
-            <h5 class='card-subtitle mb-2 text-muted'>".$customer['address']."</h6>
             <p class='card-text'>
             ";
             while($itemRow = $items->fetch_assoc()){
