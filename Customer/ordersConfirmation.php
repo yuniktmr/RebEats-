@@ -103,7 +103,7 @@
                                     <?php
                                     $_SESSION['row'] = $row['ord_id'];
                                     foreach ($_SESSION["cart"] as $key => $value) {
-                                        echo $_SESSION['row'];
+                                    
                                         if ($sql = mysqli_prepare($con, "INSERT INTO order_items (ord_id, item_id, instructions) VALUES ( ? ,?, ?)")) {
                                             $sql->bind_param("iis", $_SESSION['row'], $value['product_id'], $value['descript']);
                                            

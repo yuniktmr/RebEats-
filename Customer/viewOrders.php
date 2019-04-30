@@ -117,11 +117,11 @@ session_start();
                             <td><?php
                                 $results = mysqli_query($con, "SELECT items.name from items INNER JOIN order_items WHERE order_items.ord_id = {$row['ord_id']} AND items.item_id = order_items.item_id ");
                                 while ($crow = mysqli_fetch_array($results)){
-                                    echo $crow['name']." ";
+                                    echo $crow['name']." || ";
                                 }
                             ?>
                             </td>
-                            <td><?php echo $row['cost'];?></td>
+                            <td>$<?php echo $row['cost'];?></td>
                             <td><?php if ($row['dr_confirm']==0 || $row['dr_confirm']==2){
                             echo "Pending";}elseif ($row['dr_confirm']==1){echo "Accepted";}
                             ?></td>
