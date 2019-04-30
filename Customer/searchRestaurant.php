@@ -20,7 +20,7 @@ function food() {
                 ?>
                 <div class="card-deck">
                     <div class="card">
-                        <img class="card-img-top" src='<?php echo $row["images"]; ?>' alt="Card image cap">
+                        <img class="card-img-top" src='<?php echo $row["images"]; ?>' alt="Image Loading...">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $row['rest_name']; ?></h5>
                             <p class="card-text">Price: <?php echo "$" . $row['cost']; ?></p>
@@ -55,7 +55,7 @@ function food() {
                         ?>
                         <div class="card-deck">
                             <div class="card">
-                                <img class="card-img-top" src='<?php echo $row["images"]; ?>' alt="Card image cap">
+                                <img class="card-img-top" src='<?php echo $row["images"]; ?>' alt="Image Loading..">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $row['rest_name']; ?></h5>
                                     <p class="card-text"><?php echo "Address: " . $row['address']; ?></p>
@@ -90,7 +90,7 @@ function food() {
                                 ?>
                                 <div class="card-deck">
                                     <div class="card">
-                                        <img class="card-img-top" src='<?php echo $row["images"]; ?>' alt="Card image cap">
+                                        <img class="card-img-top" src='<?php echo $row["images"]; ?>' alt="Image Loading...">
                                         <div class="card-body">
                                             <h5 class="card-title"><?php echo $row['rest_name']; ?></h5>
                                             <p class="card-text"><?php echo "Address: " . $row['address']; ?></p>

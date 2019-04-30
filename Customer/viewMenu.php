@@ -83,7 +83,7 @@ and open the template in the editor.
                     ?>  
                     <div class="card-deck">
                         <div class="card">
-                            <img class="card-img-top" src='<?php echo $row["images"]; ?>' alt="Card image cap">
+                            <img class="card-img-top" src='<?php echo $row["images"]; ?>' alt="Image Loading...">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $row['name']; ?></h5>
                                 <p class="card-text"><?php echo "$" . $row['cost']; ?></p>

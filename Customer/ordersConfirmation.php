@@ -117,7 +117,7 @@
                                                     $result = $sql->get_result();
                                                     while ($row = mysqli_fetch_array($result)) {
                                                         ?>
-                                                        <img src="<?php echo $row['images']; ?>">
+                                                        <img src="<?php echo $row['images']; ?>" alt="Picture Loading...">
 
                                                         <div class="card-body">
 

@@ -128,8 +128,8 @@ session_start();
                             <td><?php if ($row['rest_confirm']==0){
                             echo "Not received";}else{echo "Received";}
                             ?></td>
-                            <td><?php if ($row['dr_confirm']==0 || $row['rest_confirm']==0){
-                            echo "Not Fulfilled";}else{echo "Fulfilled";}
+                            <td><?php if ($row['dr_confirm']==1 && $row['rest_confirm']==1){
+                            echo "Fulfilled";}else{echo "Not Fulfilled";}
                             ?></td>
                         </tr>
                             <?php }?>

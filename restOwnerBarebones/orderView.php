@@ -125,9 +125,9 @@ echo "<div class='navbar-brand' style='color: white;'>".$resultHeading->fetch_as
         $customer = mysqli_query($conn, $customerQuery)->fetch_assoc();
         $items = mysqli_query($conn, $itemQuery);
 
-        echo "<div class='card' style='width: 1875px; margin-left: 20px; margin-bottom: 20px; text-align: center; background-color: #343A40; color: white;'>
-        <div class='card-body'>
-            <h4 class='card-title'>Submitted by ".$customer['name']." </h5>
+        echo "<div class='card' style='width: 90rem; margin-left: 3rem; margin-bottom: 20px; text-align: center; background-color: #343A40; color: white;'>
+            <div class='card-body'>
+            <h4 class='card-title'>Submitted by ".$customer['name']." </h4>
             <p class='card-text'>
             ";
             while($itemRow = $items->fetch_assoc()){
@@ -161,9 +161,9 @@ echo "<div class='navbar-brand' style='color: white;'>".$resultHeading->fetch_as
         $customer = mysqli_query($conn, $customerQuery)->fetch_assoc();
         $items = mysqli_query($conn, $itemQuery);
 
-        echo "<div class='card' style='width: 1875px; margin-left: 20px; margin-bottom: 20px; text-align: center; background-color: #343A40; color: white'>
+        echo "<div class='card' style='width: 90rem; margin-left: 3rem; margin-bottom: 20px; text-align: center; background-color: #343A40; color: white'>
         <div class='card-body'>
-            <h4 class='card-title'>Submitted by ".$customer['name']." </h5>
+            <h4 class='card-title'>Submitted by ".$customer['name']." </h4>
             <p class='card-text'>
             ";
             while($itemRow = $items->fetch_assoc()){
