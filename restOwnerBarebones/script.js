@@ -18,3 +18,17 @@ function logout(){
 function submit(){
     document.getElementById("form").submit();
 }
+
+function showAlert(){
+
+  var name = document.getElementById('name').value;
+  var price = document.getElementById('price').value;
+  var description = document.getElementById('description').value;
+
+  if(name !== "" && price !== "" && description !== ""){
+    alert(name+" was added");
+  }else{
+    alert("Please enter all fields");
+  }
+
+}

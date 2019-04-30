@@ -100,17 +100,17 @@ echo "<div class='navbar-brand' style='color: white;'>".$resultHeading->fetch_as
         <div class='form-group'>
         <label>Item Name</label>
         <input name='email' style='display: none' value='".$email."'>
-        <input type='text' name='name' class='form-control' placeholder='Enter Name'>
+        <input type='text' name='name' id='name' class='form-control' placeholder='Enter Name'>
         </div>
         <div class='form-group'>
         <label>Item Price</label>
-        <input type='number' name='price' class='form-control' placeholder='Enter Price'>
+        <input type='number' name='price' id='price' class='form-control' placeholder='Enter Price'>
         </div>
         <div class='form-group'>
         <label>Item Description</label>
-        <input type='text' name='description' class='form-control' placeholder='Enter Description'>
+        <input type='text' name='description' id='description' class='form-control' placeholder='Enter Description'>
         </div>
-        <button type='submit' class='btn' style='display: inline; margin-top: 20px'>Add Item</button>
+        <button type='submit' class='btn' onclick=showAlert() style='display: inline; margin-top: 20px'>Add Item</button>
         <button class='btn' style='color: black; display: inline; margin-top: 20px'><a href='index.php?email=".$email."' style='color: black; display: inline'>Finish Adding</a></button>
         </form>";?>
 
