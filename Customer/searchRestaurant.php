@@ -4,7 +4,7 @@ session_start();
 function assign($count) {
     
 }
-
+#Filter resturant based on food items
 function food() {
     $con = mysqli_connect("localhost", "root", "olemiss2019", "");
     $result = mysqli_select_db($con, "eatrebs");
@@ -38,7 +38,7 @@ function food() {
                 echo "Error";
             }
         }
-
+        #filter restaurant based on name
         function Named() {
             $con = mysqli_connect("localhost", "root", "olemiss2019", "");
             $result = mysqli_select_db($con, "eatrebs");
@@ -72,7 +72,7 @@ function food() {
                         echo "Error";
                     }
                 }
-
+                #filter restaurant based on zipcode
                 function Zipcode() {
 
                     $con = mysqli_connect("localhost", "root", "olemiss2019", "");
@@ -196,17 +196,17 @@ function food() {
                                     <!--<input type="submit">-->
                                     </form>
                                     <br>
-<?php
-if (isset($_GET['filter'])) {
-    if ($_GET['filter'] == 'Food') {
-        food();
-    } elseif ($_GET['filter'] == 'RestaurantName') {
-        Named();
-    } else {
-        Zipcode();
-    }
-}
-?>
+                                        <?php
+                                        if (isset($_GET['filter'])) {
+                                            if ($_GET['filter'] == 'Food') {
+                                                food();
+                                            } elseif ($_GET['filter'] == 'RestaurantName') {
+                                                Named();
+                                            } else {
+                                                Zipcode();
+                                            }
+                                        }
+                                        ?>
                                 </div>
                             </body>
                         </html>

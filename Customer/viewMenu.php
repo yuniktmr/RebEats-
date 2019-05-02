@@ -67,7 +67,8 @@ and open the template in the editor.
         </nav>
         <br>
 
-
+        
+        <!--Retrieve menu of the restaurant-->
         
         <?php
         $con = mysqli_connect("localhost", "root", "olemiss2019", "");

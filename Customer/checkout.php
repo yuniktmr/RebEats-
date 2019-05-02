@@ -64,6 +64,7 @@
             </div>
         </nav>
         <br>
+        <!--order details-->
         <div class="jumbotron">
             <h1 class="display-4">RebEats!</h1>
             <p class="lead">Thank you for shopping with us! </p>
@@ -130,6 +131,7 @@
                         </div>
                     </div>
                 </div>
+                <!--payment fields-->
                 <div class="col-sm-6"> 
                     <div class="card" style="width: 36rem;">
                         <div class="card-body">

@@ -35,7 +35,7 @@ if (isset($_POST['add'])) {
 }
 ?>
 <?php
-
+#sorting the menu items
 function displayItems() {
     $con = mysqli_connect("localhost", "root", "olemiss2019", "");
     $result = mysqli_select_db($con, "eatrebs");

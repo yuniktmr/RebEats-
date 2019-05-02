@@ -1,5 +1,6 @@
 <?php
 session_start();
+#the array of items in the cart
 $con = mysqli_connect("localhost", "root", "olemiss2019", "eatrebs");
 if (isset($_POST['add'])) {
     if (isset($_SESSION['cart'])) {

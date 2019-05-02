@@ -73,6 +73,7 @@
         </div>
     </nav>
     <br>
+    <!--dipslay the confirmation for the ordered items-->
     <div class="jumbotron">
         <h1 class="display-4">RebEats!</h1>
         <p class="lead">Thank you for shopping with us! </p>
